@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @user.name %>
+
+</p>
+<p>
+  <strong>Apellido:</strong>
+  <%= @user.last_name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Rol</strong>
+  <%= @user.roles.pluck(:name).join(",")%>
+</p>
+<%= link_to 'Back', user_index_path %>

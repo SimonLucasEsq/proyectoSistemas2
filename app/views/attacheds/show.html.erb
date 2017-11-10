@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @attached.descripcion %>
+</p>
+
+<p>
+  <strong>Fecha subida:</strong>
+  <%= @attached.fecha_subida %>
+</p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @attached.investigation.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_attached_path(@attached) %> |
+<%= link_to 'Back', attacheds_path %>

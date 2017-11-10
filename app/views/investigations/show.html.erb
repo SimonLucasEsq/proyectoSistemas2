@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @investigation.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @investigation.descripcion %>
+</p>
+
+<p>
+  <strong>Fecha entrega:</strong>
+  <%= @investigation.fecha_entrega %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @investigation.user %>
+</p>
+
+<%= link_to 'Edit', edit_investigation_path(@investigation) %> |
+<%= link_to 'Back', investigations_path %>

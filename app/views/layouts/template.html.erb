@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dirección de Extensión e Investigación</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body class="hold-transition skin-green sidebar-mini">
+
+  <div class="wrapper">
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="/" class="logo">  <!-- "/" es la ruta especificada al home#index -->
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">Ext-Inv.</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">Ext-Inv</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header">MENU</li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-list-alt fa-fw"></i> <span>Extensión</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="index.html"><i class="fa fa-circle-o"></i> Proyectos</a></li>
+              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Actividades</a></li>
+              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Servicios</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-list-alt fa-fw"></i> <span>Investigación</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="investigations"><i class="fa fa-circle-o"></i> Informes</a></li>
+              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Docentes</a></li>
+              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Alumnos</a></li>
+            </ul>
+          </li>
+          <li><a href="students"><i class="fa fa-users"></i> <span>Universitarios</span></a></li>
+          <li><a href="https://adminlte.io/docs"><i class="fa fa-camera"></i> <span>Galeria</span></a></li>    
+          <li><a href="user"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+          <li><a href="students"><i class="fa fa-user-secret"></i> <span>Auditoria</span></a></li>
+          <li><%=link_to 'Salir',destroy_user_session_path(:authenticity_token=> form_authenticity_token()),method: 'delete' %></li>
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+  
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="padding-top:1px;">
+      <!-- Content Header (Page header) -->
+<%=yield%>
+
+    </div>
+    <!-- /.content-wrapper -->
+    
+    <!-- Control Sidebar -->
+
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+  </div>
+
+</body>
+</html>
