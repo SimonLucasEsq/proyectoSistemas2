@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   resources :students
   resources :careers
   resources :attacheds
-  resources :investigations
   resources :universitarios
   resources :carreras
- 
+  resources :investigations do
+  	member do
+  		get :show_attacheds
+  	end
+  end
   resources :user
   resources :role
   resources :audits

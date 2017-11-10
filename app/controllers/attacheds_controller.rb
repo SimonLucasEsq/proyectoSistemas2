@@ -1,5 +1,4 @@
 class AttachedsController < ApplicationController
-  layout 'template'
   before_action :set_attached, only: [:show, :edit, :update, :destroy]
 
   # GET /attacheds
@@ -55,6 +54,8 @@ class AttachedsController < ApplicationController
   # DELETE /attacheds/1
   # DELETE /attacheds/1.json
   def destroy
+    @attached.file = nil
+    @attached.save
     @attached.destroy
     respond_to do |format|
       format.html { redirect_to attacheds_url, notice: 'Attached was successfully destroyed.' }
