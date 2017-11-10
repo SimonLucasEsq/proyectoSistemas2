@@ -1,0 +1,58 @@
+<%= form_with(model: extension, local: true) do |form| %>
+  <% if extension.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(extension.errors.count, "error") %> prohibited this extension from being saved:</h2>
+
+      <ul>
+      <% extension.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="col-md-3">
+</div>
+<div class="col-md-6">
+
+    <div class="form-group">
+    <%= form.label "Nombre" %>
+    <%= form.text_field :name, id: :extension_name %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label "Descripcion" %>
+    <%= form.text_field :description, id: :extension_description %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label "Fecha inicio" %>
+    <%= form.date_select :date_start, id: :extension_date_start %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label "Fecha find " %>
+    <%= form.date_select :date_end, id: :extension_date_end %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label "Estado" %>
+    <%= form.select :state_id, options_for_select(Extension.all.map{|c| [c.name, c.id]}, :extension_state_id), class: 'custom-select' %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label "Encargado" %>
+    <%= form.select :manager_id, options_for_select(Extension.all.map{|c| [c.name, c.id]}, :extension_manager_id), class: 'custom-select' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Crear Nuevo Proyecto", class: 'btn btn-primary' %>
+  </div>
+
+</br>
+
+ <%= link_to 'Volver', extensions_path%>
+ </div>
+  
+<% end %>
