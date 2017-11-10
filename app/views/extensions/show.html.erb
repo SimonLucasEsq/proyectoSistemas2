@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-3">
+</div>
+<div class="col-md-6">
+  <div class="jumbotron">
+<h1>Detalle proyecto</h1>
+<p>
+  <strong>Nombre:</strong>
+  <%= @extension.name %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @extension.description %>
+</p>
+
+<p>
+  <strong>Fecha Inicio:</strong>
+  <%= @extension.date_start %>
+</p>
+
+<p>
+  <strong>Fecha Fin:</strong>
+  <%= @extension.date_end %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @extension.state %>
+</p>
+
+<p>
+  <strong>Encargado:</strong>
+  <%= @extension.manager %>
+</p>
+</div>
+
+<%= link_to 'Editar', edit_extension_path(@extension) %> |
+<%= link_to 'volver', extensions_path %>
+</div>
