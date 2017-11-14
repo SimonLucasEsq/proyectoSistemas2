@@ -6,11 +6,8 @@ Rails.application.routes.draw do
   resources :students
   resources :careers
   resources :attacheds
-<<<<<<< HEAD
-=======
   resources :universitarios
   resources :carreras
->>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
   resources :investigations do
   	member do
   		get :show_attacheds
