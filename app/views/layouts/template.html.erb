@@ -5,6 +5,8 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 
@@ -44,7 +46,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="index.html"><i class="fa fa-circle-o"></i> Proyectos</a></li>
+              <li><%= link_to extensions_path do%><i class="fa fa-circle-o"></i> Proyectos<%end%></li>
               <li><a href="index2.html"><i class="fa fa-circle-o"></i> Actividades</a></li>
               <li><a href="index2.html"><i class="fa fa-circle-o"></i> Servicios</a></li>
             </ul>
@@ -55,16 +57,22 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="investigations"><i class="fa fa-circle-o"></i> Informes</a></li>
+              <li><%= link_to investigations_path do%><i class="fa fa-circle-o"></i> Informes<%end%></li>
               <li><a href="index2.html"><i class="fa fa-circle-o"></i> Docentes</a></li>
               <li><a href="index2.html"><i class="fa fa-circle-o"></i> Alumnos</a></li>
             </ul>
           </li>
-          <li><a href="students"><i class="fa fa-users"></i> <span>Universitarios</span></a></li>
+          <li><%= link_to universitarios_path do%><i class="fa fa-users"></i> <span>Universitarios</span><%end%></li>
           <li><a href="https://adminlte.io/docs"><i class="fa fa-camera"></i> <span>Galeria</span></a></li>    
+<<<<<<< HEAD
+          <li><a href="users"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+
+          <li><%= link_to audits_paht do%><i class="fa fa-user-secret"></i> <span>Auditoria</span><%end%></li>
+=======
           <li><a href="user"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
 
           <li><a href="audits"><i class="fa fa-user-secret"></i> <span>Auditoria</span></a></li>
+>>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
           <li><%=link_to 'Salir',destroy_user_session_path(:authenticity_token=> form_authenticity_token()),method: 'delete' %></li>
         </ul>
       </section>

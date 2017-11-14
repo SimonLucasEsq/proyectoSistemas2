@@ -10,7 +10,14 @@ class ExtensionsController < ApplicationController
 
   # GET /extensions/1
   # GET /extensions/1.json
-  def show
+  def show_documents
+    @document = Document.where(:extension_id => params[:id])
+    @extension = Extension.find(params[:id])
+  end
+
+  def show_photos
+    @photo = Photo.where(:extension_id => params[:id])
+    @extension = Extension.find(params[:id])
   end
 
   # GET /extensions/new
@@ -43,7 +50,11 @@ class ExtensionsController < ApplicationController
   def update
     respond_to do |format|
       if @extension.update(extension_params)
+<<<<<<< HEAD
+        format.html { redirect_to extensions_path, notice: 'Extension was successfully updated.' }
+=======
         format.html { redirect_to @extension, notice: 'Extension was successfully updated.' }
+>>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
         format.json { render :show, status: :ok, location: @extension }
       else
         format.html { render :edit }
