@@ -1,20 +1,27 @@
 Rails.application.routes.draw do
+  resources :photos
   resources :documents
-  resources :extensions
   resources :managers
   resources :states
   resources :students
   resources :careers
   resources :attacheds
-<<<<<<< HEAD
-=======
   resources :universitarios
   resources :carreras
->>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
   resources :investigations do
   	member do
   		get :show_attacheds
   	end
+  end
+  resources :extensions do
+    member do
+      get :show_documents
+    end
+  end
+  resources :extensions do
+    member do
+      get :show_photos
+    end
   end
   resources :user
   resources :role

@@ -79,12 +79,12 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Date start</th>
-      <th>Date end</th>
-      <th>State</th>
-      <th>Manager</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Fin</th>
+      <th>Estado</th>
+      <th>Encargado</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -96,11 +96,16 @@
         <td><%= extension.description %></td>
         <td><%= extension.date_start %></td>
         <td><%= extension.date_end %></td>
-        <td><%= extension.state %></td>
-        <td><%= extension.manager %></td>
-        <td><%= link_to 'Show', extension %></td>
-        <td><%= link_to 'Edit', edit_extension_path(extension) %></td>
-        <td><%= link_to 'Destroy', extension, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= extension.state_name %></td>
+        <td><%= extension.manager_name %></td>
+        <td>
+          <%= link_to '', extension, class: 'fa fa-eye btn btn-warning'%>
+          <%= link_to '', edit_extension_path(extension),class: 'btn btn-info fa fa-edit' %>
+          <%= link_to '', extension, class: 'fa fa-close btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to '', show_documents_extension_path(extension), class: 'fa fa-bars btn btn-success' %>
+          
+        </td>
+
       </tr>
     <% end %>
   </tbody>

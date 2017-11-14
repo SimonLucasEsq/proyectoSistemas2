@@ -1,9 +1,46 @@
 <p id="notice"><%= notice %></p>
 
+  <div class="col-md-6">
+  <h1>Detalle Proyecto</h1>
+  <p>
+    <strong>Nombre:</strong>
+    <%= @extension.name %>
+  </p>
+
+  <p>
+    <strong>Descripcion:</strong>
+    <%= @extension.description %>
+  </p>
+
+  <p>
+    <strong>Fecha Inicio:</strong>
+    <%= @extension.date_start %>
+  </p>
+
+  <p>
+    <strong>Fecha Fin:</strong>
+    <%= @extension.date_end %>
+  </p>
+
+  <p>
+    <strong>Estado:</strong>
+    <%= @extension.state_name %>
+  </p>
+
+  <p>
+    <strong>Encargado:</strong>
+    <%= @extension.manager_name %>
+  </p>
+
+  <%= link_to 'Fotos', show_photos_extension_path(@extension) %> |
+  <%= link_to 'Editar', edit_extension_path(@extension) %> |
+  <%= link_to 'volver', extensions_path %>
+
+  </div>
+
 <div class="col-md-3">
 </div>
 <div class="col-md-6">
-  <div class="jumbotron">
 <h1>Detalle proyecto</h1>
 <p>
   <strong>Nombre:</strong>
@@ -27,35 +64,20 @@
 
 <p>
   <strong>Estado:</strong>
-<<<<<<< HEAD
+
   <%= @extension.state.name %>
-=======
   <%= @extension.state %>
->>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
 </p>
 
 <p>
   <strong>Encargado:</strong>
-<<<<<<< HEAD
+
   <%= @extension.manager.name %>
-=======
+
   <%= @extension.manager %>
->>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
 </p>
 </div>
 
 <%= link_to 'Editar', edit_extension_path(@extension) %> |
 <%= link_to 'volver', extensions_path %>
 </div>
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-
-</body>
-</html>
-=======
->>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695

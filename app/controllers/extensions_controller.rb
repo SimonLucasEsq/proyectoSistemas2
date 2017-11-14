@@ -10,7 +10,14 @@ class ExtensionsController < ApplicationController
 
   # GET /extensions/1
   # GET /extensions/1.json
-  def show
+  def show_documents
+    @document = Document.where(:extension_id => params[:id])
+    @extension = Extension.find(params[:id])
+  end
+
+  def show_photos
+    @photo = Photo.where(:extension_id => params[:id])
+    @extension = Extension.find(params[:id])
   end
 
   # GET /extensions/new

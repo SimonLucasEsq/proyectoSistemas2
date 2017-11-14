@@ -119,12 +119,12 @@
 
     <div class="form-group">
     <%= form.label "Estado" %>
-    <%= form.select :state_id, options_for_select(Extension.all.map{|c| [c.name, c.id]}, :extension_state_id), class: 'custom-select' %>
+    <%= form.select :state_id, options_for_select(State.all.map{|c| [c.name, c.id]}, :extension_state_id), class: 'custom-select' %>
   </div>
 
     <div class="form-group">
     <%= form.label "Encargado" %>
-    <%= form.select :manager_id, options_for_select(Extension.all.map{|c| [c.name, c.id]}, :extension_manager_id), class: 'custom-select' %>
+    <%= form.select :manager_id, options_for_select(Manager.all.map{|c| [c.name, c.id]}, :extension_manager_id), class: 'custom-select' %>
   </div>
 
   <div class="actions">
