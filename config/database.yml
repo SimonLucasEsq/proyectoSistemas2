@@ -5,13 +5,18 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 3000
 
 
 development:
   <<: *default
   database: proyecto_development
   username: postgres
+<<<<<<< HEAD
   password: enzolandia
+=======
+  password: kumagai12
+>>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,10 +25,18 @@ test:
   <<: *default
   database: proyecto_test
   username: postgres
+<<<<<<< HEAD
   password: enzolandia
+=======
+  password: kumagai12
+>>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
 
 production:
   <<: *default
   database: proyecto_production
   username: postgres
+<<<<<<< HEAD
   password: enzolandia
+=======
+  password: kumagai12
+>>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695

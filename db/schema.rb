@@ -10,6 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
 ActiveRecord::Schema.define(version: 20171110072100) do
 
   # These are extensions that must be enabled in order to support this database
@@ -48,12 +52,46 @@ ActiveRecord::Schema.define(version: 20171110072100) do
     t.index ["created_at"], name: "index_audits_on_created_at"
     t.index ["request_uuid"], name: "index_audits_on_request_uuid"
     t.index ["user_id", "user_type"], name: "user_index"
+<<<<<<< HEAD
+=======
   end
 
   create_table "careers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+>>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
+  end
+
+  create_table "careers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "name"
+    t.bigint "extension_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "doc_file_name"
+    t.string "doc_content_type"
+    t.integer "doc_file_size"
+    t.datetime "doc_updated_at"
+    t.index ["extension_id"], name: "index_documents_on_extension_id"
+  end
+
+  create_table "extensions", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.date "date_start"
+    t.date "date_end"
+    t.bigint "state_id"
+    t.bigint "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_extensions_on_manager_id"
+    t.index ["state_id"], name: "index_extensions_on_state_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -164,6 +202,11 @@ ActiveRecord::Schema.define(version: 20171110072100) do
   end
 
   add_foreign_key "attacheds", "investigations"
+<<<<<<< HEAD
+=======
+  add_foreign_key "data_users", "users", column: "users_id"
+  add_foreign_key "datos_personals", "users"
+>>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
   add_foreign_key "documents", "extensions"
   add_foreign_key "extensions", "managers"
   add_foreign_key "extensions", "states"
