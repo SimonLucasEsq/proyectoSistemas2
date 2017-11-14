@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :investigations do
   	member do
   		get :show_attacheds
+      get :create_attached
   	end
+    collection do
+      get :my_investigations
+    end
   end
   resources :extensions do
     member do

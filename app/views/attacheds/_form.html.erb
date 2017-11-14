@@ -17,15 +17,19 @@
   <div class="col-md-6">
     <h1>Nuevo Archivo Adjunto.</h1>
 
+    
     <div class="form-group">
       <%= form.label :descripcion %>
-      <%= form.text_field :descripcion, id: :attached_descripcion, class: 'form-controlV' %>
+      <%= form.text_field :descripcion, id: :attached_descripcion, class: 'form-control' %>
     </div>
+   
 
+    <!--
     <div class="form-group">
       <%= form.label :fecha_subida %>
       <%= form.date_select :fecha_subida, id: :attached_fecha_subida %>
     </div>
+    -->
 
     <div class="form-group">
       <%= form.label :investigation_id %>
@@ -33,15 +37,15 @@
     </div>
 
      <div class="form-group">
-      <%= form.label :file, 'Seleccionar Archivo' %>
       <%= form.file_field :file, class: 'custom-file-input' %>
     </div>
  
     <div class="actions form-group">
       <%= form.submit "Crear Archivo Adjunto", class: 'btn btn-primary' %>
+       <%= link_to 'Volver', my_investigations_investigations_path, class: 'btn btn-success' %>
     </div>
 
-    <%= link_to 'Volver', attacheds_path %>
+   
   </div>
 
   <div class="col-md-3">
