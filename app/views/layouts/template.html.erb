@@ -55,9 +55,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="investigations"><i class="fa fa-circle-o"></i> Informes</a></li>
-              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Docentes</a></li>
-              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Alumnos</a></li>
+              <li><%= link_to ' Todos los informes', investigations_path, class: 'fa fa-circle-o' %></li>
+              <li><%= link_to ' Mis informes', my_investigations_investigations_path, class: 'fa fa-circle-o' %></li>
             </ul>
           </li>
           <li><a href="students"><i class="fa fa-users"></i> <span>Universitarios</span></a></li>
