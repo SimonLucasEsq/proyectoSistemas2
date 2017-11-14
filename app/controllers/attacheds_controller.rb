@@ -1,5 +1,6 @@
 class AttachedsController < ApplicationController
   before_action :set_attached, only: [:show, :edit, :update, :destroy]
+  layout 'template'
 
   # GET /attacheds
   # GET /attacheds.json
