@@ -1,33 +1,77 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <header class="row">
+    <h3 class="col-md-9" style="text-align: center;">Mis trabajos de Investigación.</h3>
+    <h3 class="col-md-3" style="text-align: center;">Archivos adjuntos.</h3>
+  </header>
+  <body>
+    <section class="row">
+      <section class="col-md-9">
+        <div class="box" style="height: 400px">
+          <table class="table table-responsive table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Trabajo de Investigación</th>
+                <th>Fecha de entrega</th>
+                <th>Usuario</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% i= 0 %>  
+            <% @investigations.each do |investigation| %>
+              <tr>
+                <td><%= i += 1 %></td>
+                <td><%= investigation.nombre %></td>
+                <td><%= investigation.fecha_entrega %></td>
+                <td><%= investigation.user.email %></td>
+                <td>
+                  <%= link_to '', investigation, class: 'fa fa-eye btn btn-warning' %>
+                  <%= link_to '', edit_investigation_path(investigation), class: 'btn btn-info fa fa-edit'%>
+                  <%= link_to '', investigation, class: 'fa fa-close btn btn-danger' , method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to '', show_attacheds_investigation_path(investigation), class: 'fa fa-bars btn btn-success' %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div> 
+        
+        <%= link_to 'New Investigation', new_investigation_path, class: 'btn btn-primary' %> 
+      </section>
 
-<h1>Informes</h1>
+      <section class="col-md-3">
+        <div class="box => caja" style="height: 400px">
+          
+        </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Fecha entrega</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <%= link_to 'New Attached', new_attached_path, class: 'btn btn-primary' %>
 
-  <tbody>
-    <% @investigations.each do |investigation| %>
-      <tr>
-        <td><%= investigation.nombre %></td>
-        <td><%= investigation.descripcion %></td>
-        <td><%= investigation.fecha_entrega %></td>
-        <td><%= investigation.user.email %></td>
-        <td><%= link_to 'Show', investigation %></td>
-        <td><%= link_to 'Edit', edit_investigation_path(investigation) %></td>
-        <td><%= link_to 'Destroy', investigation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </section>
+    </section>
+  </body>
+</div>
 
-<br>
-
-<%= link_to 'New Investigation', new_investigation_path %>
+          
+                
+                
+               
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+              

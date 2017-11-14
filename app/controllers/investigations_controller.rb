@@ -1,11 +1,15 @@
 class InvestigationsController < ApplicationController
-  layout 'template'
   before_action :set_investigation, only: [:show, :edit, :update, :destroy]
-
+  layout 'template'
   # GET /investigations
   # GET /investigations.json
   def index
     @investigations = Investigation.all
+  end
+
+  def show_attacheds
+    @attacheds = Attached.where(:investigation_id => params[:id])
+    @investigation = Investigation.find(params[:id])
   end
 
   # GET /investigations/1
