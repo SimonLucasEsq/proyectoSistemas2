@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get :show_photos
     end
   end
-  resources :user
+  resources :usuarios
   resources :role
   resources :audits
   devise_for :users

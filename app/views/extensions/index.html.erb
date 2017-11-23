@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,47 +70,3 @@
 
 </body>
 </html>
-=======
-<p id="notice"><%= notice %></p>
-
-<h1>Proyecto Extencion</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Fecha Inicio</th>
-      <th>Fecha Fin</th>
-      <th>Estado</th>
-      <th>Encargado</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @extensions.each do |extension| %>
-      <tr>
-        <td><%= extension.name %></td>
-        <td><%= extension.description %></td>
-        <td><%= extension.date_start %></td>
-        <td><%= extension.date_end %></td>
-        <td><%= extension.state_name %></td>
-        <td><%= extension.manager_name %></td>
-        <td>
-          <%= link_to '', extension, class: 'fa fa-eye btn btn-warning'%>
-          <%= link_to '', edit_extension_path(extension),class: 'btn btn-info fa fa-edit' %>
-          <%= link_to '', extension, class: 'fa fa-close btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%= link_to '', show_documents_extension_path(extension), class: 'fa fa-bars btn btn-success' %>
-          
-        </td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Extension', new_extension_path %>
->>>>>>> 8a675d41d54dab2f2ad56b2e858e6cb13bd27695
