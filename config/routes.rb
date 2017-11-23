@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :careers
   resources :attacheds
   resources :universitarios
-  resources :carreras
   resources :investigations do
   	member do
   		get :show_attacheds
