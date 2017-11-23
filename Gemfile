@@ -65,7 +65,6 @@ end
 
 group :production do
 	gem 'pg'
-	gem 'rails 12factor'
 end
 
 group :development do
