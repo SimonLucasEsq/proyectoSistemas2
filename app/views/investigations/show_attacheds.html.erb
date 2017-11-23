@@ -1,0 +1,44 @@
+
+<div class="container col-md-12">
+	<header>
+		<h3 style="text-align: center">Archivos adjuntos</h3>
+	</header>
+	<body>
+		<section class="col-md-12">
+			<section class="box" style="height: 450px">
+				<table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th>Archivo</th>
+				      <th>Fecha de subida</th>
+				      <th colspan="1"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<% @attacheds.each do |a| %>
+				    <tr>
+				      <td><%= a.descripcion %></td>
+				      <td><%= a.fecha_subida %></td>
+				      <td>
+				      	<%= link_to "" , a.file.url, class: 'btn btn-primary fa fa-arrow-down' %>
+				      	<%= link_to "", a, class: 'fa fa-close btn btn-danger' , method: :delete, data: { confirm: 'Estás seguro?' } %>
+				      </td>
+				    </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			</section>
+		</section>
+		<!--
+		<div>
+			<%= link_to 'Volver', my_investigations_investigations_path, class: 'btn btn-success' %>
+		</div>
+		-->
+	</body>
+</div>
+
+
+
+
+
+
