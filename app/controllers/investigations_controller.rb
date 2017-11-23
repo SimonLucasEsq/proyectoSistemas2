@@ -12,6 +12,10 @@ class InvestigationsController < ApplicationController
     @investigation = Investigation.find(params[:id])
   end
 
+  def my_investigations
+    @investigations = Investigation.where(:user_id => current_user.id)
+  end
+
   # GET /investigations/1
   # GET /investigations/1.json
   def show
@@ -30,7 +34,7 @@ class InvestigationsController < ApplicationController
   # POST /investigations.json
   def create
     @investigation = Investigation.new(investigation_params)
-
+    @investigation.user_id = current_user.id
     respond_to do |format|
       if @investigation.save
         format.html { redirect_to @investigation, notice: 'Investigation was successfully created.' }

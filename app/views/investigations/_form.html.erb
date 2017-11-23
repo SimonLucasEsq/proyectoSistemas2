@@ -35,16 +35,13 @@
         <%= form.date_select :fecha_entrega, id: :investigation_fecha_entrega, class: 'custom-select' %>
       </div>
 
-      <div class="form-group">
-        <%= form.label :user_id %>
-        <%= form.select :user_id, options_for_select(User.all.map{|c| [c.email, c.id]}, :datos_personal_user_id), class: 'custom-select' %>
-      </div>
+     
 
       <div class="actions form-group">
-        <%= form.submit "Guardar" , class: 'btn-primary' %>
+        <%= form.submit "Guardar" , class: 'btn btn-primary' %>
+        <%= link_to 'Volver', my_investigations_investigations_path, class: 'btn btn-success' %>
       </div>
 
-      <%= link_to 'Volver', investigations_path %>
     </div>
     
     <div class= 'col-sm-3 col-md-3'>
