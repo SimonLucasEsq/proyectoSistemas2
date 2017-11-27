@@ -5,6 +5,8 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -46,9 +48,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><%= link_to extensions_path do%><i class="fa fa-circle-o"></i> Proyectos<%end%></li>
-              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Actividades</a></li>
-              <li><a href="index2.html"><i class="fa fa-circle-o"></i> Servicios</a></li>
+              <li><%= link_to extensions_path(:nombre => 'Activity') do%><i class="fa fa-circle-o"></i> Actividades<%end%></li>
+              <li><%= link_to extensions_path(:nombre => 'Proyect') do%><i class="fa fa-circle-o"></i> Proyectos<%end%></li>
+              <li><%= link_to extensions_path(:nombre => 'Service') do%><i class="fa fa-circle-o"></i> Servicios<%end%></li>
             </ul>
           </li>
           <li class="treeview">

@@ -1,7 +1,7 @@
 class Extension < ApplicationRecord
   belongs_to :state
   belongs_to :manager
-
+  belongs_to :extension_type
 
 	def state_name
 		self.state.blank? ? "" : self.state.name

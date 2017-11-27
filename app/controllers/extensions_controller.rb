@@ -5,9 +5,11 @@ class ExtensionsController < ApplicationController
   # GET /extensions
   # GET /extensions.json
   def index
-    @extensions = Extension.all
+    @extension_type = ExtensionType.find_by(:name => params[:nombre])
+    @extensions = Extension.where(:extension_type_id => @extension_type.id)
   end
 
+ 
   # GET /extensions/1
   # GET /extensions/1.json
   def show_documents
@@ -23,6 +25,7 @@ class ExtensionsController < ApplicationController
   # GET /extensions/new
   def new
     @extension = Extension.new
+    @extension.extension_type_id = params[:id]
   end
 
   # GET /extensions/1/edit
@@ -77,6 +80,6 @@ class ExtensionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def extension_params
-      params.require(:extension).permit(:name, :description, :date_start, :date_end, :state_id, :manager_id)
+      params.require(:extension).permit(:name, :description, :date_start, :date_end, :state_id, :manager_id, :extension_type_id)
     end
 end
