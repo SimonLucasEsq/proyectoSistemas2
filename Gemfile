@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Twitter-Bootstrap
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0.alpha6', git: 'https://github.com/twbs/bootstrap-rubygem'
 # JQuery things

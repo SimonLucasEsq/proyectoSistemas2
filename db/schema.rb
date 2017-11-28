@@ -127,10 +127,11 @@ ActiveRecord::Schema.define(version: 20171110072100) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "investigations", force: :cascade do |t|
+   create_table "investigations", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
-    t.date "fecha_entrega"
+    t.date "fecha_inicio"
+    t.date "fecha_fin"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
