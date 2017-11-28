@@ -48,6 +48,17 @@
         <%= form.label "Fecha inicio" %><br/>
         <%= form.date_select :date_start, id: :extension_date_start %>
       </div>
+      <div class="form-group">
+        <label>Date:</label>
+
+        <div class="input-group date">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input type="text" class="form-control pull-right" id="datepicker">
+        </div>
+        <!-- /.input group -->
+      </div>
 
       <div class="form-group">
         <%= form.label "Fecha fin " %><br/>
@@ -58,6 +69,11 @@
         <%= form.label "Estado" %><br/>
         <%= form.select :state_id, options_for_select(State.all.map{|c| [c.name, c.id]}, :extension_state_id), class: 'custom-select' %>
       </div>
+
+      <div style="display: none">
+        <%= form.text_field :extension_type_id, id: :extension_extension_type_id %>
+      </div>
+
     </div>
     <div class="col-md-2"></div>
   </section>
@@ -73,6 +89,7 @@
     </div>
     <div class="col-md-2"></div>
   </section>
+
 
 </body>
 </html>

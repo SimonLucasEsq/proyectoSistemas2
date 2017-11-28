@@ -1,0 +1,49 @@
+<div class="col-md-4 blog-main box tex-center" id="manager_<%= manager.id %>">
+
+  <div class="panel panle-info">
+
+    <div class="panel-heading">
+      <h3 class="panle-title"><%= manager.name %></h3>
+      <p><%= manager.description %></p>
+    </div>
+
+    <div class="panel-body">
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myupdatemanager">Editar</button>
+        <%= link_to '', manager, class: 'fa fa-close btn btn-danger', method: :delete, data: {confirm: '¿Estas seguro?'}%>
+      </div>
+    </div>
+
+  </div>
+
+  <%= form_for(manager, :method => :put) do |f| %>
+      <!-- Modal -->
+      <div class="modal fade" id="myupdatemanager_<%= manager.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Editar</h4>
+            </div>
+
+            <div class="modal-body">
+              <div class="field">
+                <%= f.label "Nombre" %>
+                <%= f.text_field :name, id: :manager_name, class: "form-control" %>
+              </div>
+              <div class="field">
+                <%= f.label "Descripción" %>
+                <%= f.text_field :description, id: :manager_description, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <%= f.submit "Guardar", class: 'btn btn-primary'%>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+

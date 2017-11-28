@@ -1,11 +1,19 @@
 class InvestigationsController < ApplicationController
-  layout 'template'
   before_action :set_investigation, only: [:show, :edit, :update, :destroy]
-
+  layout 'index'
   # GET /investigations
   # GET /investigations.json
   def index
     @investigations = Investigation.all
+  end
+
+  def show_attacheds
+    @attacheds = Attached.where(:investigation_id => params[:id])
+    @investigation = Investigation.find(params[:id])
+  end
+
+  def my_investigations
+    @investigations = Investigation.where(:user_id => current_user.id)
   end
 
   # GET /investigations/1
@@ -26,7 +34,7 @@ class InvestigationsController < ApplicationController
   # POST /investigations.json
   def create
     @investigation = Investigation.new(investigation_params)
-
+    @investigation.user_id = current_user.id
     respond_to do |format|
       if @investigation.save
         format.html { redirect_to @investigation, notice: 'Investigation was successfully created.' }

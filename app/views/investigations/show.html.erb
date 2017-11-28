@@ -11,14 +11,14 @@
 </p>
 
 <p>
-  <strong>Fecha entrega:</strong>
+  <strong>Fecha de entrega:</strong>
   <%= @investigation.fecha_entrega %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @investigation.user %>
+  <strong>Usuario:</strong>
+  <%= @investigation.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_investigation_path(@investigation) %> |
+<%= link_to 'Editar', edit_investigation_path(@investigation) %> |
 <%= link_to 'Back', investigations_path %>

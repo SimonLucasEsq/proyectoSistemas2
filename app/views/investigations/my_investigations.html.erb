@@ -1,0 +1,69 @@
+<div class="container col-md-12">
+  <header class="row">
+    <h3 class="col-md-8" style="text-align: center;">Mis trabajos de Investigación.</h3>
+    <h3 class="col-md-4" style="text-align: center;">Archivos adjuntos.</h3>
+  </header>
+  <body>
+    <section class="row">
+      <section class="col-md-8 col-xs-8">
+        <div class="col-md-12 col-xs-12">    
+      <!-- Content Header (Page header) -->
+          <div class="box", style= "height: 400px">
+            <div class="box-body">
+              <table id="tablaInvestigacion" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Trabajo de Investigación</th>
+                  <th>Fecha de entrega</th>
+                  <th>Opciones</th>
+                </tr>
+                </thead>
+                  <tbody>
+                  <% i= 0 %>  
+                  <% @investigations.each do |investigation| %>
+                    <tr>
+                      <td><%= i += 1 %></td>
+                      <td><%= investigation.nombre %></td>
+                      <td><%= investigation.fecha_entrega %></td>
+                      <td>
+                        <%= link_to '', investigation, class: 'fa fa-eye btn btn-warning' %>
+                        <%= link_to '', edit_investigation_path(investigation), class: 'btn btn-info fa fa-edit'%>
+                        <%= link_to '', investigation, class: 'fa fa-close btn btn-danger' , method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <%= link_to '', show_attacheds_investigation_path(investigation), class: 'fa fa-bars btn btn-success' %>
+                      </td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          <%= link_to 'Nueva Investigación', new_investigation_path, class: 'btn btn-primary' %>
+        </div> 
+      </section>
+
+      <section class="col-md-4">
+        <div class="box => caja" style="height: 400px">
+          
+        </div>
+
+        <%= link_to 'Adjuntar Archivo', new_attached_path, class: 'btn btn-primary' %>
+
+      </section>
+    </section>
+  </body>
+</div>
+
+
+<script>
+  $(function () {
+    $('#tablaInvestigacion').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'autoWidth'   : false
+    })
+  })
+</script>

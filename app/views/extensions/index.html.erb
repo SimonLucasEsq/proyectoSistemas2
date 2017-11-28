@@ -6,6 +6,13 @@
 <body>
     <header class="row">
     <h3 style="text-align: center;">Proyectos</h3>
+      <% if @extension_type.name == "Activity"%>
+        <h1 style="text-align: center;">Actividades</h1>
+      <% elsif @extension_type.name == "Proyect"%>
+        <h1 style="text-align: center;">Proyectos</h1>
+      <% elsif @extension_type.name == "Service" %>
+        <h1 style="text-align: center;">Servicios</h1>
+      <% end %>
     </header>
     <div class="box">
       <div class="box-header with-border">
@@ -47,6 +54,7 @@
                 </td>
                 <td><%= extension.date_end %></td>
                 <td>
+                  <%= link_to 'Ver', extension %>
                   <%= link_to '', edit_extension_path(extension), class: 'btn btn-info fa fa-edit'%>
                   <%= link_to '', extension, class: 'fa fa-close btn btn-danger', method: :delete, data: {confirm: '¿Estas seguro?'}%>
                 </td>
@@ -62,6 +70,14 @@
           <li>
             <%= link_to new_extension_path do%>
               <button type="button" class="btn btn-primary">Agregar Proyecto</button>
+            <%= link_to new_extension_path(:id => @extension_type.id) do%>
+              <% if @extension_type.name == "Activity" %>
+                <button type="button" class="btn btn-primary">Agregar Actividad</button>
+              <% elsif @extension_type.name == "Proyect" %>
+                <button type="button" class="btn btn-primary">Agregar Proyecto</button>
+              <% elsif @extension_type.name == "Service" %>
+                <button type="button" class="btn btn-primary">Agregar Servicio</button>
+              <% end %>
             <%end%>
           </li>
         </ul>
