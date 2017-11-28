@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20171110072100) do
+ActiveRecord::Schema.define(version: 20171123032050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +107,12 @@ ActiveRecord::Schema.define(version: 20171110072100) do
     t.index ["extension_id"], name: "index_documents_on_extension_id"
   end
 
+  create_table "extension_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "extensions", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -117,6 +122,8 @@ ActiveRecord::Schema.define(version: 20171110072100) do
     t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "extension_type_id"
+    t.index ["extension_type_id"], name: "index_extensions_on_extension_type_id"
     t.index ["manager_id"], name: "index_extensions_on_manager_id"
     t.index ["state_id"], name: "index_extensions_on_state_id"
   end
@@ -146,6 +153,19 @@ ActiveRecord::Schema.define(version: 20171110072100) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "extension_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "img_file_name"
+    t.string "img_content_type"
+    t.integer "img_file_size"
+    t.datetime "img_updated_at"
+    t.index ["extension_id"], name: "index_photos_on_extension_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -222,9 +242,11 @@ ActiveRecord::Schema.define(version: 20171110072100) do
   add_foreign_key "data_users", "users", column: "users_id"
   add_foreign_key "datos_personals", "users"
   add_foreign_key "documents", "extensions"
+  add_foreign_key "extensions", "extension_types"
   add_foreign_key "extensions", "managers"
   add_foreign_key "extensions", "states"
   add_foreign_key "investigations", "users"
+  add_foreign_key "photos", "extensions"
   add_foreign_key "students", "careers"
   add_foreign_key "universitarios", "carreras"
 end

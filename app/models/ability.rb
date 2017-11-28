@@ -6,21 +6,21 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
      if user.has_role? :admin
-       can :manage,:all
-       # can :read, User
-      #  can :create,User
-     #   can :update, User do |u|
-    #      user==u
-   #     end
+        can :read, User
+        can :read,Audit
+        can :create,User
         #cannot :create,User
         #cannot :destroy,User
 
-  #      can :destroy,User do |u|
- #             user==u
-#        end
+        can :destroy,User do |u|
+              user==u
+        end
+        can :update,User
     end
-     if user.has_role? :AdminDptoExt
-        can :read, User
-    end
+     if user.has_role? :Investigador
+        can :read, User 
+        cannot :create, User
+     end        
+     end
   end
-end
+

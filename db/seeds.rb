@@ -16,3 +16,15 @@ admin.name = "Simon"
 admin.email = "simonlucas1996@gmail.com"
 admin.password = 123456
 admin.save
+
+acti = ExtensionType.new
+acti.name = "Activity"
+acti.save
+
+proy = ExtensionType.new
+proy.name = "Proyect"
+proy.save
+
+servi = ExtensionType.new
+servi.name = "Service"
+servi.save

@@ -1,37 +1,85 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+    <header class="row">
+      <% if @extension_type.name == "Activity"%>
+        <h1 style="text-align: center;">Actividades</h1>
+      <% elsif @extension_type.name == "Proyect"%>
+        <h1 style="text-align: center;">Proyectos</h1>
+      <% elsif @extension_type.name == "Service" %>
+        <h1 style="text-align: center;">Servicios</h1>
+      <% end %>
+    </header>
+    <div class="box">
+      <div class="box-header with-border">
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-responsive table-bordered">
+          <tbody>
+            <tr>
+              <th style="width: 200px">Nombre</th>
+              <th style="width: 200px">Descripción</th>
+              <th style="width: 150px">Encargado</th>
+              <th style="width: 200px">Estado</th>
+              <th style="width: 150px">Fecha Fin</th>
+              <th style="width: 150px">Opciones</th>
+            </tr>
+            <% @extensions.each do |extension| %>
+              <tr>
+                <td><%= extension.name %></td>
+                <td><%= extension.description %></td>
+                <td><%= extension.manager.name %></td>
+                <td>
+                  <% if extension.state.name == "en curso"%>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm progress-striped active">
+                      <div class="progress-bar progress-bar-primary" style="width: 55%"></div>
+                    </div>
+                  <% elsif extension.state.name == "culminado" %>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm">
+                      <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                    </div>
+                  <% elsif extension.state.name == "en espera" %>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm">
+                      <div class="progress-bar progress-bar-yellow" style="width: 55%"></div>
+                    </div>
+                  <% end %>
+                </td>
+                <td><%= extension.date_end %></td>
+                <td>
+                  <%= link_to 'Ver', extension %>
+                  <%= link_to '', edit_extension_path(extension), class: 'btn btn-info fa fa-edit'%>
+                  <%= link_to '', extension, class: 'fa fa-close btn btn-danger', method: :delete, data: {confirm: '¿Estas seguro?'}%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  
+              <!-- /.box-body -->
+      <div class="box-footer clearfix">
+        <ul class="pagination pagination-sm no-margin pull-left">
+          <li>
+            <%= link_to new_extension_path(:id => @extension_type.id) do%>
+              <% if @extension_type.name == "Activity" %>
+                <button type="button" class="btn btn-primary">Agregar Actividad</button>
+              <% elsif @extension_type.name == "Proyect" %>
+                <button type="button" class="btn btn-primary">Agregar Proyecto</button>
+              <% elsif @extension_type.name == "Service" %>
+                <button type="button" class="btn btn-primary">Agregar Servicio</button>
+              <% end %>
+            <%end%>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-<h1>Proyecto Extencion</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Date start</th>
-      <th>Date end</th>
-      <th>State</th>
-      <th>Manager</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @extensions.each do |extension| %>
-      <tr>
-        <td><%= extension.name %></td>
-        <td><%= extension.description %></td>
-        <td><%= extension.date_start %></td>
-        <td><%= extension.date_end %></td>
-        <td><%= extension.state %></td>
-        <td><%= extension.manager %></td>
-        <td><%= link_to 'Show', extension %></td>
-        <td><%= link_to 'Edit', edit_extension_path(extension) %></td>
-        <td><%= link_to 'Destroy', extension, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Extension', new_extension_path %>
+</body>
+</html>

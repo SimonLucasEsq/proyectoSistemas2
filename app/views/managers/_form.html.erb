@@ -11,32 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
+<div class="col-md-3"></div>
+
+<div class="col-md-6">
+  <div class="form-group">
+    <%= form.label "Nombre" %>
     <%= form.text_field :name, id: :manager_name %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
+  <div class="form-group">
+    <%= form.label "Descripción" %>
     <%= form.text_field :description, id: :manager_description %>
   </div>
 
-  <div class="field">
-    <%= form.label :place %>
+  <div class="form-group">
+    <%= form.label "Dirección" %>
     <%= form.text_field :place, id: :manager_place %>
   </div>
 
+  <div class="form-group">
   <div class="field">
     <%= form.label :email %>
     <%= form.text_field :email, id: :manager_email %>
   </div>
 
-  <div class="field">
-    <%= form.label :phone %>
+  <div class="form-group">
+    <%= form.label "Teléfono" %>
     <%= form.text_field :phone, id: :manager_phone %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <ul class="pull-right">
+      <%= link_to 'Volver', managers_path, class: 'btn btn-default'%>
+    <%= form.submit "Agregar encargado", class: 'btn btn-primary'%>
+    <% end %>
   </div>
-<% end %>
+  </ul>
+
+
+<div class="col-md-3"></div>
