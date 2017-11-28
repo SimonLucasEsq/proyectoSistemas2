@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+    <header class="row">
+    <h3 style="text-align: center;">Proyectos</h3>
+    </header>
+    <div class="box">
+      <div class="box-header with-border">
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-responsive table-bordered">
+          <tbody>
+            <tr>
+              <th style="width: 200px">Nombre</th>
+              <th style="width: 200px">Descripción</th>
+              <th style="width: 150px">Encargado</th>
+              <th style="width: 200px">Estado</th>
+              <th style="width: 150px">Fecha Fin</th>
+              <th style="width: 150px">Opciones</th>
+            </tr>
+            <% @extensions.each do |extension| %>
+              <tr>
+                <td><%= extension.name %></td>
+                <td><%= extension.description %></td>
+                <td><%= extension.manager.name %></td>
+                <td>
+                  <% if extension.state.name == "en curso"%>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm progress-striped active">
+                      <div class="progress-bar progress-bar-primary" style="width: 55%"></div>
+                    </div>
+                  <% elsif extension.state.name == "culminado" %>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm">
+                      <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                    </div>
+                  <% elsif extension.state.name == "en espera" %>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm">
+                      <div class="progress-bar progress-bar-yellow" style="width: 55%"></div>
+                    </div>
+                  <% end %>
+                </td>
+                <td><%= extension.date_end %></td>
+                <td>
+                  <%= link_to '', edit_extension_path(extension), class: 'btn btn-info fa fa-edit'%>
+                  <%= link_to '', extension, class: 'fa fa-close btn btn-danger', method: :delete, data: {confirm: '¿Estas seguro?'}%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  
+              <!-- /.box-body -->
+      <div class="box-footer clearfix">
+        <ul class="pagination pagination-sm no-margin pull-left">
+          <li>
+            <%= link_to new_extension_path do%>
+              <button type="button" class="btn btn-primary">Agregar Proyecto</button>
+            <%end%>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+</body>
+</html>
