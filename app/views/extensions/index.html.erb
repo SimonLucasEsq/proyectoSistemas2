@@ -5,6 +5,7 @@
 </head>
 <body>
     <header class="row">
+    <h3 style="text-align: center;">Proyectos</h3>
       <% if @extension_type.name == "Activity"%>
         <h1 style="text-align: center;">Actividades</h1>
       <% elsif @extension_type.name == "Proyect"%>
@@ -67,6 +68,8 @@
       <div class="box-footer clearfix">
         <ul class="pagination pagination-sm no-margin pull-left">
           <li>
+            <%= link_to new_extension_path do%>
+              <button type="button" class="btn btn-primary">Agregar Proyecto</button>
             <%= link_to new_extension_path(:id => @extension_type.id) do%>
               <% if @extension_type.name == "Activity" %>
                 <button type="button" class="btn btn-primary">Agregar Actividad</button>
