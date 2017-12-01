@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require twitter/bootstrap
 //= require adminlte
 //= require jquery.dataTables.min.js
 //= require dataTables.bootstrap.min.js

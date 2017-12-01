@@ -40,10 +40,10 @@ class ExtensionsController < ApplicationController
     respond_to do |format|
       if @extension.save
         format.html { redirect_to @extension, notice: 'Extension was successfully created.' }
-        format.json { render :show, status: :created, location: @extension }
+        format.json { render :show, status: :created, location: @extensions }
       else
         format.html { render :new }
-        format.json { render json: @extension.errors, status: :unprocessable_entity }
+        format.json { render json: @extensions.errors, status: :unprocessable_entity }
       end
     end
   end
