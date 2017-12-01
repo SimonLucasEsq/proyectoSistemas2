@@ -33,7 +33,7 @@
         <%= form.label "Encargado" %>
         <br/>
         <%= form.select :manager_id, options_for_select(Manager.all.map{|c| [c.name, c.id]}, :extension_manager_id), class: 'custom-select' 'form-control' %>
-        <%= link_to new_manager_path do%>
+        <%= link_to managers_url do%>
         <button type="button" class="btn btn-box-tool" data-widget="collapse">
           <i class="fa fa-plus"></i>
         </button>
@@ -49,7 +49,19 @@
         <%= form.date_select :date_start, id: :extension_date_start %>
       </div>
       <div class="form-group">
-        <label>Date:</label>
+        <label>Fecha Inicio:</label>
+
+        <div class="input-group date">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input type="text" class="form-control pull-right" id="datepicker">
+        </div>
+        <!-- /.input group -->
+      </div>
+
+      <div class="form-group">
+        <label>Fecha Fin:</label>
 
         <div class="input-group date">
           <div class="input-group-addon">
@@ -90,22 +102,6 @@
     <div class="col-md-2"></div>
   </section>
 
-<<<<<<< HEAD
-  <div id="new-manager" style="display: none;"></div>
-
-  <script>
-    $(document).ready(function(){
-        $("#myBtn").click(function(){
-            $("#myModal").modal();
-        });
-    });
-
-    $('#myModal').on('shown.bs.modal', function () {
-      $('#myInput').trigger('focus')
-    })
-  </script>
-=======
->>>>>>> b23e10a672a501428fc2c057426272aebafd7560
 
 </body>
 </html>

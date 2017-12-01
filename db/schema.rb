@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123032050) do
+ActiveRecord::Schema.define(version: 20171128081238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,11 +134,10 @@ ActiveRecord::Schema.define(version: 20171123032050) do
     t.datetime "updated_at", null: false
   end
 
-   create_table "investigations", force: :cascade do |t|
+  create_table "investigations", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
-    t.date "fecha_inicio"
-    t.date "fecha_fin"
+    t.date "fecha_entrega"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -153,6 +152,16 @@ ActiveRecord::Schema.define(version: 20171123032050) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.integer "hours"
+    t.bigint "student_id"
+    t.bigint "extension_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["extension_id"], name: "index_participants_on_extension_id"
+    t.index ["student_id"], name: "index_participants_on_student_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -246,6 +255,8 @@ ActiveRecord::Schema.define(version: 20171123032050) do
   add_foreign_key "extensions", "managers"
   add_foreign_key "extensions", "states"
   add_foreign_key "investigations", "users"
+  add_foreign_key "participants", "extensions"
+  add_foreign_key "participants", "students"
   add_foreign_key "photos", "extensions"
   add_foreign_key "students", "careers"
   add_foreign_key "universitarios", "carreras"
