@@ -1,3 +1,4 @@
+
 <h1>Editar Perfil</h1>
 
 <div class="row">
@@ -8,19 +9,13 @@
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-     
-    <%= f.label "Cargo"%>
-    <%= select_tag :role, options_from_collection_for_select(Role.all,"name","name"),class: "form-control"%>
+      <%= f.email_field :email, class: 'form-control' %>  
+      <%= f.label "Cargo"%>
+      <%= select_tag :role, options_from_collection_for_select(Role.all,"name","name"),class: "form-control"%>
     </br>
     <%= f.submit "Guardar", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
+
 

@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 gem "audited"
+gem "select2-rails"
+gem 'hairtrigger'
 #gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
