@@ -1,7 +1,6 @@
 class InvestigationsController < ApplicationController
   before_action :set_investigation, only: [:show, :edit, :update, :destroy]
   layout 'template'
-
   # GET /investigations
   # GET /investigations.json
   def index

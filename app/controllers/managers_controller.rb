@@ -17,6 +17,9 @@ class ManagersController < ApplicationController
   # GET /managers/new
   def new
     @manager = Manager.new
+    respond_to do |f|
+      f.js
+    end
   end
 
   # GET /managers/1/edit
