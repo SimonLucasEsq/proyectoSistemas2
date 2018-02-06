@@ -17,6 +17,14 @@ admin.email = "simonlucas1996@gmail.com"
 admin.password = 123456
 admin.save
 
+student = StudentType.new
+student.participant = "Beneficiario"
+student.save
+
+student = StudentType.new
+student.participant = "Extensionista"
+student.save
+
 acti = ExtensionType.new
 acti.name = "Activity"
 acti.save
