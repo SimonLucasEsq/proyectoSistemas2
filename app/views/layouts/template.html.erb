@@ -47,6 +47,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MENU</li>
+
           <%if current_user.is_adminExt? || current_user.is_admin?%>
             <li class="treeview">
               <a href="#">
@@ -82,7 +83,7 @@
             <li><%= link_to students_path do%><i class="fa fa-users"></i> <span>Universitarios</span><%end%></li>
             <li><%= link_to photos_path do%><i class="fa fa-camera"></i> <span>Galeria</span><% end %></li>    
           <% end %>
-          
+
           <li><%= link_to usuarios_path do%><i class="fa fa-user"></i> <span>Usuarios</span><% end %></li>
 
           <li><%= link_to audits_path do%><i class="fa fa-user-secret"></i> <span>Auditoria</span><%end%></li>

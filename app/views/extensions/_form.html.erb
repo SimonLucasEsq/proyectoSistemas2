@@ -27,7 +27,7 @@
         <%= form.label "Encargado" %>
         <br/>
         <%= form.select :manager_id, options_for_select(Manager.all.map{|c| [c.name, c.id]}, :extension_manager_id), class: 'custom-select' 'form-control' %>
-        <%= link_to new_manager_path do%>
+        <%= link_to managers_url do%>
         <button type="button" class="btn btn-box-tool" data-widget="collapse">
           <i class="fa fa-plus"></i>
         </button>

@@ -138,8 +138,7 @@ ActiveRecord::Schema.define(version: 20180202165652) do
   create_table "investigations", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
-    t.date "fecha_inicio"
-    t.date "fecha_fin"
+    t.date "fecha_entrega"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

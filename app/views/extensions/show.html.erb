@@ -8,28 +8,22 @@
           <%= @extension.name %>
         </p>
 
-        <p>
-          <strong>Descripcion:</strong>
-          <%= @extension.description %>
-        </p>
+  <div class="col-md-6">
+  <h1>Detalle Proyecto</h1>
+  <p>
+    <strong>Nombre:</strong>
+    <%= @extension.name %>
+  </p>
 
-        <p>
-          <strong>Fecha Inicio:</strong>
-          <%= @extension.date_start %>
-        </p>
-    </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <p>
-          <strong>Fecha Fin:</strong>
-          <%= @extension.date_end %>
-        </p>
+  <p>
+    <strong>Descripcion:</strong>
+    <%= @extension.description %>
+  </p>
 
-        <p>
-          <strong>Estado:</strong>
-          <%= @extension.state_name %>
-        </p>
-
+  <p>
+    <strong>Fecha Inicio:</strong>
+    <%= @extension.date_start %>
+  </p>
         <p>
           <strong>Encargado:</strong>
           <%= @extension.manager_name %>
@@ -44,7 +38,10 @@
 <!--link para agregar un paticipante por modal-->
 <%= link_to new_participant_path(:id => @extension.id), :remote=>true do %><i class="btn btn-primary fa fa-user-plus"></i><%end%>
 
-
+  <p>
+    <strong>Estado:</strong>
+    <%= @extension.state_name %>
+  </p>
   <section class="content">
       <div class="row">
         <div class="col-xs-12">    
@@ -106,3 +103,4 @@
     $('#example2').DataTable()
   })
 </script>
+
