@@ -5,7 +5,8 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @category_id = Category.find_by(:name => params[:nombre]).id
+    @students = Student.where(:category_id => @category_id)
   end
 
   # GET /students/1
@@ -15,6 +16,7 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
+    @category_id = params[:category_id]
     @student = Student.new
     respond_to do |f|
       f.js
@@ -63,7 +65,7 @@ class StudentsController < ApplicationController
   def destroy
     @student.destroy
     respond_to do |format|
-      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Student was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,6 +78,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :lastname, :email, :ci, :hours, :career_id)
+      params.require(:student).permit(:name, :lastname, :email, :ci, :hours, :career_id, :category_id)
     end
 end

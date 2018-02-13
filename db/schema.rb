@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180202165652) do
+ActiveRecord::Schema.define(version: 20180225165402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 20180202165652) do
 
   create_table "carreras", force: :cascade do |t|
     t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -138,7 +144,8 @@ ActiveRecord::Schema.define(version: 20180202165652) do
   create_table "investigations", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
-    t.date "fecha_entrega"
+    t.date "fecha_inicio"
+    t.date "fecha_fin"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -212,7 +219,9 @@ ActiveRecord::Schema.define(version: 20180202165652) do
     t.bigint "career_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
     t.index ["career_id"], name: "index_students_on_career_id"
+    t.index ["category_id"], name: "index_students_on_category_id"
   end
 
   create_table "universitarios", force: :cascade do |t|
@@ -272,5 +281,6 @@ ActiveRecord::Schema.define(version: 20180202165652) do
   add_foreign_key "participants", "students"
   add_foreign_key "photos", "extensions"
   add_foreign_key "students", "careers"
+  add_foreign_key "students", "categories"
   add_foreign_key "universitarios", "carreras"
 end

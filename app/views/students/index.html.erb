@@ -1,7 +1,7 @@
-<div class="invoice">
-<h1>Universitarios</h1>
-  <div id="estudiante" style="display:none;"></div>
   <div class="invoice">
+<div class="page-header"><%= Category.find(@category_id).name %></div>
+  <div id="estudiante" style="display:none;"></div>
+
  <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -33,6 +33,7 @@
                         <td><%= student.hours %></td>
                         <td><%= student.career.name %></td>
                         <td>
+                        <%= link_to '', student, class: 'btn btn-default fa fa-eye'%>
                         <%= link_to '', edit_student_path(student), class: 'btn btn-default fa fa-pencil', :remote=>true %>
                         <%= link_to '', student, class: 'btn btn-default fa fa-close', method: :delete, data: { confirm: 'Are you sure?' } %></td>
                       </tr>
@@ -48,7 +49,6 @@
       </div>
       <!-- /.row -->
     </section>
-</div>
 <script>
   $(function () {
     $('#example1').DataTable({
@@ -61,7 +61,8 @@
     })
   })
 </script>
-<%= link_to 'Nuevo universitario', new_student_path, class: 'btn  btn-primary', :remote=>true %>
+
+<%= link_to 'Nuevo universitario', new_student_path(:category_id => @category_id), class: 'btn  btn-primary', :remote=>true %>
 
 
 
