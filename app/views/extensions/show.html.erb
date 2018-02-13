@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="invoice">  
-  <h1>Detalle del Proyecto</h1>
+ 
+  <h3>Detalle del Proyecto</h3> 
   <section class="main row">
     <div class="col-md-4">
         <p>
@@ -8,22 +9,28 @@
           <%= @extension.name %>
         </p>
 
-  <div class="col-md-6">
-  <h1>Detalle Proyecto</h1>
-  <p>
-    <strong>Nombre:</strong>
-    <%= @extension.name %>
-  </p>
+        <p>
+          <strong>Descripcion:</strong>
+          <%= @extension.description %>
+        </p>
 
-  <p>
-    <strong>Descripcion:</strong>
-    <%= @extension.description %>
-  </p>
+        <p>
+          <strong>Fecha Inicio:</strong>
+          <%= @extension.date_start %>
+        </p>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <p>
+          <strong>Fecha Fin:</strong>
+          <%= @extension.date_end %>
+        </p>
 
-  <p>
-    <strong>Fecha Inicio:</strong>
-    <%= @extension.date_start %>
-  </p>
+        <p>
+          <strong>Estado:</strong>
+          <%= @extension.state_name %>
+        </p>
+
         <p>
           <strong>Encargado:</strong>
           <%= @extension.manager_name %>
@@ -34,14 +41,11 @@
   <%= link_to '', show_documents_extension_path(@extension), class: 'btn btn-default fa fa-file-text-o'  %>
 </div>
 <div class="invoice">
-<h2 style="text-align: center;">Participantes</h2>
+<h3>Participantes</h3>
 <!--link para agregar un paticipante por modal-->
 <%= link_to new_participant_path(:id => @extension.id), :remote=>true do %><i class="btn btn-primary fa fa-user-plus"></i><%end%>
 
-  <p>
-    <strong>Estado:</strong>
-    <%= @extension.state_name %>
-  </p>
+
   <section class="content">
       <div class="row">
         <div class="col-xs-12">    
@@ -58,7 +62,7 @@
                   <th>Correo</th>
                   <th>Horas</th>
                   <th>Tipo</th>
-                  <th>Carrera</th>
+                  <th>Categoría</th>
                   <th></th>
                 </tr>
                 </thead>
@@ -74,7 +78,7 @@
                           <td>-</td>
                         <% end %>
                         <td><%= StudentType.find(participant.student_type_id).participant %></td>
-                        <td><%= Student.find(participant.student_id).career.name %></td>
+                        <td><%= Student.find(participant.student_id).category.name %></td>
                         <td><%= link_to '', edit_participant_path(participant), :remote=>true, class: 'btn btn-default fa fa-pencil' %>
                         <%= link_to '', participant, method: :delete, data: { confirm: 'Ests seguro?' }, class: 'btn btn-default fa fa-close' %></td>
                       </tr>
@@ -103,4 +107,3 @@
     $('#example2').DataTable()
   })
 </script>
-

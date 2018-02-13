@@ -26,7 +26,6 @@
                      <td><%= usuario.last_name %></td>
                      <td><%= usuario.email %></td>
                      <td><%= usuario.roles.pluck(:name).join(",")%></td>
-                     <td><%= usuario.roles.name%></td>
                      <td>
                      <%if can? :read, usuario%>        
                         <%= link_to usuario_path(usuario),:remote => true,class: 'fa fa-eye btn btn-warning' do %>

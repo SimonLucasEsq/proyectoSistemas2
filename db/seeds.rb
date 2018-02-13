@@ -5,6 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+state = State.new
+state.name = 'en curso'
+state.save
+
+state = State.new
+state.name = 'culminado'
+state.save
+
+state = State.new
+state.name = 'en espera'
+state.save
+
 admin = User.new
 admin.name = "Admin"
 admin.email = "admin@uni.edu.py"
@@ -36,3 +48,11 @@ proy.save
 servi = ExtensionType.new
 servi.name = "Service"
 servi.save
+
+category = Category.new
+category.name = "docente"
+category.save
+
+category = Category.new
+category.name = "estudiante"
+category.save

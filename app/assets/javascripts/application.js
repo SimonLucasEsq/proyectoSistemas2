@@ -10,13 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require twitter/bootstrap
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require twitter/bootstrap
 //= require adminlte
 //= require select2.full.js
 //= require select2.js
+//= require jspdf.js
 //= require jquery.dataTables.min.js
 //= require dataTables.bootstrap.min.js
 
