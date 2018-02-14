@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180225165402) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 20180225165402) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -162,6 +165,7 @@ ActiveRecord::Schema.define(version: 20180225165402) do
     t.datetime "updated_at", null: false
   end
 
+
   create_table "participants", force: :cascade do |t|
     t.bigint "student_id"
     t.bigint "extension_id"
@@ -236,6 +240,18 @@ ActiveRecord::Schema.define(version: 20180225165402) do
     t.index ["carrera_id"], name: "index_universitarios_on_carrera_id"
   end
 
+  create_table "universitarios", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellido"
+    t.integer "ci"
+    t.string "correo"
+    t.integer "cant_horas"
+    t.bigint "carrera_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carrera_id"], name: "index_universitarios_on_carrera_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -276,6 +292,7 @@ ActiveRecord::Schema.define(version: 20180225165402) do
   add_foreign_key "extensions", "managers"
   add_foreign_key "extensions", "states"
   add_foreign_key "investigations", "users"
+
   add_foreign_key "participants", "extensions"
   add_foreign_key "participants", "student_types"
   add_foreign_key "participants", "students"

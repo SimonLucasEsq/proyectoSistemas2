@@ -11,7 +11,8 @@ development:
   <<: *default
   database: proyecto_development
   username: postgres
-  password: ternerita
+
+  password: 
 
 
 # Warning: The database defined as "test" will be erased and
@@ -21,10 +22,13 @@ test:
   <<: *default
   database: proyecto_test
   username: postgres
-  password: ternerita
+
+  password: 
+
 
 production:
   <<: *default
   database: proyecto_production
   username: postgres
-  password: ternerita
+
+  password: 

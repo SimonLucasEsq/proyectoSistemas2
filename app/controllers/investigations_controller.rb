@@ -11,6 +11,10 @@ class InvestigationsController < ApplicationController
      inner join (select * from users_roles ur where ur.role_id = #{@rol_id}) as ur on i.user_id = ur.user_id")
   end
 
+  def my_investigations
+    @investigations = Investigation.where(:user_id => current_user.id)
+  end
+
   # GET /investigations/1
   # GET /investigations/1.json
   def show
