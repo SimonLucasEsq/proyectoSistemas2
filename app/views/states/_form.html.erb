@@ -11,12 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :state_name %>
+
+
+<div class="col-md-3"></div>
+
+<div class="col-md-6">
+  <div class="form-group">
+    <%= form.label "Nombre" %>
+    <%= form.text_field :name, id: :manager_name, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <ul class="pull-right">
+      <%= link_to 'Volver', states_path, class: 'btn btn-default'%>
+    <%= form.submit "Agregar estado", class: 'btn btn-primary'%>
+    <% end %>
   </div>
-<% end %>
+  </ul>
+
+
+<div class="col-md-3"></div>

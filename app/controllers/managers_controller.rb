@@ -6,6 +6,7 @@ class ManagersController < ApplicationController
   # GET /managers.json
   def index
     @managers = Manager.all
+    @manager = Manager.new
   end
 
   # GET /managers/1
@@ -29,7 +30,9 @@ class ManagersController < ApplicationController
 
     respond_to do |format|
       if @manager.save
-        format.html { redirect_to extensions_url(@extensions), notice: 'Manager was successfully created.' }
+
+        format.html { redirect_to managers_url, notice: 'Manager was successfully created.' }
+
         format.json { render :show, status: :created, location: @manager }
       else
         format.html { render :new }

@@ -2,32 +2,40 @@ class UsuariosController < ApplicationController
   layout 'template'
    before_action :authenticate_user!
    before_action :set_user, only: [:show, :edit, :update,:destroy]
-   protect_from_forgery with: :null_session, only: [:show,:create,:update,:destroy]
 
   def index
 		@users=User.all
+    authorize! :read, @user, :message =>'No puede entrar a esta opcion'
 	end
   
 
   # GET /user/new
   def new
+    respond_to do |f|
     @user = User.new
+      f.js
+    end
   end
 # GET /user/
   def show
+    respond_to do |format|
+        format.js
+      end
   end
 
   # GET /user/1/edit
   def edit
+
   end
 
   # POST /users
   # POST /users
   def create
+    authorize! :create, @user, :message => "No puedes tienes acceso a esta opcion."
     @user = User.new(user_params)
     @user.add_role(params[:role])
     @user.save
-    redirect_to usuario_index_path
+    redirect_to usuarios_path, notice: 'Usuario fue creado'
    
    end
  
@@ -37,24 +45,35 @@ class UsuariosController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-   if @user.update(user_params)
-          redirect_to @user, notice: 'Usuario fue actualizado.' 
-    end
+    authorize! :update, @user, :message => "No puedes tienes acceso a esta opcion."
+      if @user.is_admin? 
+         @user.remove_role :admin
+      end
+      if @user.is_adminInv?
+        @user.remove_role :adminInv  
+      end
+      if @user.is_adminExt?
+        @user.remove_role :adminExt
+      end
+      if @user.is_investigador?
+        @user.remove_role :Investigador
+      end
+      
+      @user.add_role(params[:role])
+      @user.update(user_params)
+      redirect_to usuarios_path, notice: 'Usuario fue actualizado.'
   end 
 
   # DELETE Users
   def destroy
-   User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to usuario_path
+   @user.destroy
+   redirect_to usuarios_path, notice: 'Usuario fue eliminado.'
   end
 
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
-  
-
     def set_user
       @user = User.find(params[:id])
     end

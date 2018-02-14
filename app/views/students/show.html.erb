@@ -1,34 +1,77 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
-
-<p>
-  <strong>Lastname:</strong>
-  <%= @student.lastname %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @student.email %>
-</p>
-
-<p>
-  <strong>Ci:</strong>
-  <%= @student.ci %>
-</p>
-
-<p>
-  <strong>Hours:</strong>
-  <%= @student.hours %>
-</p>
-
-<p>
-  <strong>Career:</strong>
-  <%= @student.career %>
-</p>
-
+<div class="invoice">
+<h4>A- IDENTIFICACIÓN PERSONAL</h4>
+<table  class="table">
+<tr>
+  <th>Nombres y Apellidos:</th>
+  <td><%= @student.name + " " + @student.lastname %></td>
+</tr>
+<tr>
+  <th>Nº C.I.:</th>
+  <td><%= @student.ci %></td>
+</tr>
+<tr>
+  <th>Carrera:</th>
+  <td><%= @student.career.name %></td>
+</tr>
+<tr>
+  <th>e-mail:</th>
+  <td><%= @student.email %></td>
+</tr>
+<tr>
+  <th>Horas totales:</th>
+  <td><%= @student.hours %></td>
+</tr>
+</table>
+</div>
+ <div class="invoice"> 
+  <h4>B- ACTIVIDADES DE EXTENSIÓN UNIVERSITARIA</h4>
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">    
+      <!-- Content Header (Page header) -->
+          <div class="box">
+          
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table">
+                <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Descripcion</th>
+                  <th>Estado</th>
+                  <th>Fecha inicio</th>
+                  <th>Fecha fin</th>
+                </tr>
+                </thead>
+                  <tbody>
+                    <% Student.univ_extension(@student.id).each do |extension| %>
+                    <tr>
+                      <td><%= link_to extension.name, extension_path(extension.id)%></td>
+                      <td><%= extension.description %></td>
+                      <td><%= extension.state_id %></td>
+                      <td><%= extension.date_start %></td>
+                      <td><%= extension.date_end %></td>
+                    <% end %>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+  </div>
 <%= link_to 'Editar', edit_student_path(@student) %> |
 <%= link_to 'Atras', students_path %>
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>

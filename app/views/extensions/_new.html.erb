@@ -1,4 +1,6 @@
-<%= form_for @extension, url: {action: "create"} do |form| %>
+
+<%= form_for @extension, url: {action: "create"}, html: {id: "form"} do |form| %>
+
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
 <div class="modal-dialog">
@@ -17,12 +19,16 @@
     <div class="col-md-4">
       <div class="form-group">
       <%= form.label "Nombre" %>
-      <%= form.text_field :name, id: :extension_name, class: 'form-control' %>
+
+      <%= form.text_field :name, id: :extension_name, class: 'form-control input' %>
+
       </div>
 
       <div class="form-group">
       <%= form.label "Descripcion" %>
-      <%= form.text_field :description, id: :extension_description, class: 'form-control' %>
+
+      <%= form.text_field :description, id: :extension_description, class: 'form-control input' %>
+
       </div>
 
       <!-- Formulario para encargado del proyecto -->
@@ -41,7 +47,7 @@
 
     <!-- Columna para otros formularios -->
     <div class="col-md-4">
-      
+
       <div class="form-group">
       <%= form.label "Fecha Inicio" %>
       <div class="input-group date date-j">
@@ -88,21 +94,53 @@
 
       </div>
       <div class="modal-footer">
-        <%= form.submit "Guardar",class: "btn btn-primary"%>
+
+        <%= form.submit "Crear",class: "btn btn-primary", id: "submit"%>
+
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
   </div>
 </div>
 
-
-<script type="text/javascript">
-
+<%end%>
+<script>
+  
 $('.date-j').datepicker({ 
       format: "yyyy/mm/dd",
       language: "es"
   });
 
+$(document).ready(function() {
+    $('.select2').select2();
+    $('#submit').attr('disabled', true);
+    $(".input").keyup(function() {
+      $('#submit').attr('disabled', false);
+        var form = $(this).parents("#form");
+        var check = checkCampos(form);
+        if(check) {
+            $('#submit').attr('disabled', false);
+            $('#comentario').hide();
+        }
+        else {
+            $('#submit').attr('disabled', true);
+            $('#comentario').show();
+        }
+    });
+});
+function checkCampos(obj) {
+    var camposRellenados = true;
+    obj.find(".input").each(function() {
+    var $this = $(this);
+            if( $this.val().length <= 0 ) {
+                camposRellenados = false;
+                return false;
+            }
+    });
+    if(camposRellenados == false) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 </script>
-
-<%end%>
-

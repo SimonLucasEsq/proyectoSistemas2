@@ -13,7 +13,6 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-        <!--          <th>Descripcion</th> -->
                   <th>Modelo</th>
                   <th>Accion</th>
                   <th>Nombre del usuario</th>
@@ -24,12 +23,12 @@
                   <tbody>
                     <% @audits.each do |audit| %>
                       <tr>
-            <!--            <td><%= audit.audited_changes%></td> -->
                         <td><%= audit.auditable_type%></td>
                         <td><%= audit.action%></td>
-                        <td><%= User.find(audit.user_id).name%></td>
+                        <td><%= link_to audit,:remote => true do%><%= User.find(audit.user_id).name%><%end%></td>
                         <td><%= User.find(audit.user_id).email%></td>
                         <td><%= audit.created_at %></td>
+                      
                       </tr>
                     <% end %>
                   </tbody>
@@ -51,19 +50,22 @@
         </div>
         <!-- /.col -->
       </div>
+     
       <!-- /.row -->
     </section>
-
+ <div id='ver'>
+</div>
 <script>
+
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
       'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
+      'lengthChange': true,
+      'searching'   : true,
       'ordering'    : true,
       'info'        : true,
-      'autoWidth'   : false
+      'autoWidth'   : true
     })
   })
 </script>
