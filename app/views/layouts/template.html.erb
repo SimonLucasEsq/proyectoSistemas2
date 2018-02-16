@@ -46,6 +46,7 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
+
           <li class="header">MENU DE EXTENSION</li>
           <%if current_user.is_adminExt? || current_user.is_admin?%>
             <li class="treeview">
@@ -97,6 +98,7 @@
           <li class="header"></li>
           <li><%= link_to usuarios_path do%><i class="fa fa-user"></i> <span>Usuarios</span><% end %></li>
           <li><%= link_to audits_path do%><i class="fa fa-user-secret"></i> <span>Auditoria</span><%end%></li>
+
 
           <li><%=link_to 'Salir',destroy_user_session_path(:authenticity_token=> form_authenticity_token()),method: 'delete' %></li>
          
