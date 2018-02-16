@@ -19,6 +19,7 @@
             <tr>
               <th style="width: 200px">Nombre</th>
               <th style="width: 200px">Descripción</th>
+              <th style="width: 150px">Carrera</th>
               <th style="width: 150px">Encargado</th>
               <th style="width: 200px">Estado</th>
               <th style="width: 150px">Fecha Fin</th>
@@ -30,6 +31,7 @@
               <tr>
                 <td><%= extension.name %></td>
                 <td><%= extension.description %></td>
+                <td><%= extension.career.name %></td>
                 <td><%= extension.manager.name %></td>
                 <td>
                   <% if extension.state.name == "en curso"%>

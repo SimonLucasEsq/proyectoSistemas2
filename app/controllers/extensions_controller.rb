@@ -93,6 +93,6 @@ class ExtensionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def extension_params
-      params.require(:extension).permit(:name, :description, :date_start, :date_end, :state_id, :manager_id, :extension_type_id)
+      params.require(:extension).permit(:name, :description, :date_start, :date_end, :state_id, :manager_id, :extension_type_id, :career_id)
     end
 end
