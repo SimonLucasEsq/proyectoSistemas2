@@ -16,6 +16,7 @@ class InvestigationsController < ApplicationController
     # Obtiene todos los adjuntos con id igual al parametro pasado.
     @attacheds = Attached.where(:investigation_id => params[:id])
     @rol = params[:param]
+
   end
 
   # GET /investigations/new
@@ -42,6 +43,7 @@ class InvestigationsController < ApplicationController
   def create
     @investigation = Investigation.new(investigation_params)
 
+
     respond_to do |format|
       if @investigation.save
         format.html { redirect_to request.referrer, notice: 'Trabajo de investigación creado.' }
@@ -65,6 +67,7 @@ class InvestigationsController < ApplicationController
             format.json { render json: @investigation.errors, status: :unprocessable_entity }
           end
         end 
+
   end
 
   # DELETE /investigations/1
@@ -74,6 +77,7 @@ class InvestigationsController < ApplicationController
     respond_to do |format|
       # Redirige al index de investigations.
       format.html { redirect_to request.referrer, notice: 'Investigación eliminada.' }
+
       format.json { head :no_content }
     end
   end

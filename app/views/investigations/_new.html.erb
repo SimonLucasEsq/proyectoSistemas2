@@ -1,4 +1,5 @@
 <!-- Modal -->
+
 <%= form_for @investigation, url: {action: "create"}, html: {id: "form", autocomplete: "off"} do |form| %>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -23,16 +24,25 @@
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <%= form.label :fecha_inicio, 'Fecha de inicio:' %><br>
-              <%= form.date_select :fecha_inicio, id: :investigation_fecha_inicio %>
-            </div>
+          <div class="form-group">
+          <%= form.label "Fecha Inicio" %>
+          <div class="input-group date date-j">
+              <%= form.text_field :fecha_inicio, id: :investigation_date_start, class: 'form-control' %>  
+              <div class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </div>
+          </div>
+          </div>
 
-            <div class="form-group">
-              <%= form.label :fecha_fin, 'Fecha de finalización:' %><br>
-              <%= form.date_select :fecha_fin, id: :investigation_fecha_fin %>
-            </div>  
+          <div class="form-group">
+          <%= form.label "Fecha Fin" %>
+          <div class="input-group date date-j" >
+              <%= form.text_field :fecha_fin, id: :investigation_date_end, class: 'form-control' %>  
+              <div class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </div>
+          </div>
+          </div>
 
             <div class="form-group">
               <%= form.label :user_id, 'Encargado: ' %>
@@ -41,7 +51,6 @@
           </div>
         </div>
       </div>
-  
       <div class="modal-footer" >
         <%= form.submit "Registrar",class: "btn btn-primary", id: "submit"%>
          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -85,4 +94,9 @@ function checkCampos(obj) {
         return true;
     }
 }
+$('.date-j').datepicker({ 
+      format: "yyyy/mm/dd",
+      language: "es",
+      todayHighlight: true
+  });
 </script>

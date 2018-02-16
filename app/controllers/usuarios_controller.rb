@@ -6,6 +6,7 @@ class UsuariosController < ApplicationController
   def index
 		@users=User.all
     authorize! :read, @user, :message => 'No puede entrar a esta opcion.'
+
 	end
   
   def investigators

@@ -11,6 +11,7 @@ development:
   <<: *default
   database: proyecto_development
   username: postgres
+
   password: 
 
 
@@ -21,10 +22,13 @@ test:
   <<: *default
   database: proyecto_test
   username: postgres
+
   password: 
+
 
 production:
   <<: *default
   database: proyecto_production
   username: postgres
+
   password: 
