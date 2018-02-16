@@ -1,13 +1,11 @@
-<div>
-
-    <div class="box">
+    <div class="invoice">
         <header class="row">
       <% if @extension_type.name == "Activity"%>
-        <h2 style="text-align: center;">Actividades</h2>
+        <h1 class="page-header">Actividades</h1>
       <% elsif @extension_type.name == "Proyect"%>
-        <h2 style="text-align: center;">Proyectos</h2>
+        <h1 class="page-header">Proyectos</h1>
       <% elsif @extension_type.name == "Service" %>
-        <h2 style="text-align: center;">Servicios</h2>
+        <h1 class="page-header">Servicios</h1>
       <% end %>
     </header>
       <div class="box-header with-border">
@@ -18,11 +16,10 @@
           <thead>
             <tr>
               <th style="width: 200px">Nombre</th>
-              <th style="width: 200px">Descripción</th>
               <th style="width: 150px">Carrera</th>
               <th style="width: 150px">Encargado</th>
               <th style="width: 200px">Estado</th>
-              <th style="width: 150px">Fecha Fin</th>
+              <th style="width: 150px">Fecha</th>
               <th style="width: 150px">Opciones</th>
             </tr>
             </thead>
@@ -30,7 +27,6 @@
             <% @extensions.each do |extension| %>
               <tr>
                 <td><%= extension.name %></td>
-                <td><%= extension.description %></td>
                 <td><%= extension.career.name %></td>
                 <td><%= extension.manager.name %></td>
                 <td>
@@ -51,7 +47,7 @@
                     </div>
                   <% end %>
                 </td>
-                <td><%= extension.date_end %></td>
+                <td><%= extension.date_start %></td>
                 <td>
                   <%= link_to '', extension,class: 'btn btn-default fa fa-eye' %>
                   <%= link_to '', edit_extension_path(extension), class: 'btn btn-default fa fa-pencil', :remote=>true%>
@@ -81,7 +77,6 @@
         </ul>
       </div>
     </div>
-</div>
 
 <div id="new-ext" style="display:none;"></div>
 

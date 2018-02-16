@@ -1,6 +1,4 @@
-
 <%= form_for @extension, url: {action: "update"}, html: {id: "form", autocomplete: "off" } do |form| %>
-
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -47,8 +45,9 @@
     </div>
 
     <!-- Columna para otros formularios -->
+    <div class="col-md-4">
 
-     <div class="form-group">
+      <div class="form-group">
       <%= form.label "Fecha Inicio" %>
       <div class="input-group date date-j">
           <%= form.text_field :date_start, id: :extension_date_start, class: 'form-control' %>  
@@ -73,11 +72,10 @@
         <%= form.label "Estado" %><br/>
         <%= form.select :state_id, options_for_select(State.all.map{|c| [c.name, c.id]}, @extension.state_id), class: 'custom-select' %>
       </div>
-
       <div class="form-group">
         <%= form.label "Carrera" %><br/>
         <%= form.select :career_id, options_for_select(Career.all.map{|c| [c.name, c.id]}, @extension.career_id), class: 'custom-select' %>
-      </div>
+      </div>      
 
       <div style="display: none">
         <%= form.text_field :extension_type_id, id: :extension_extension_type_id %>
@@ -100,7 +98,7 @@
       </div>
       <div class="modal-footer">
 
-        <%= form.submit "Crear",class: "btn btn-primary", id: "submit"%>
+        <%= form.submit "Editar",class: "btn btn-primary", id: "submit"%>
 
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
