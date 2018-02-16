@@ -18,16 +18,20 @@ class AttachedsController < ApplicationController
     @attached = Attached.new
     # Completa el campo con el parametro pasado.
     @attached.investigation_id = params[:var]
+    @rol = params[:rol]
+
   end
 
   # GET /attacheds/1/edit
   def edit
+    @rol = params[:param]
   end
 
   # POST /attacheds
   # POST /attacheds.json
   def create
     @attached = Attached.new(attached_params)
+    rol = params[:param]
 
     # Asigna la fecha de subida con la fecha actual por defecto.
     @attached.fecha_subida = Date.today
@@ -40,7 +44,8 @@ class AttachedsController < ApplicationController
       else
         respond_to do |format|
         if @attached.save
-          format.html { redirect_to Investigation.find(@attached.investigation_id), notice: 'Adjunto creado exitosamente.' }
+          format.html { redirect_to investigation_path(Investigation.find(@attached.investigation_id),:param => rol), notice: 'Adjunto creado exitosamente.' }
+
           format.json { render :show, status: :created, location: @attached }
         else
           format.html { render :new }
@@ -53,13 +58,15 @@ class AttachedsController < ApplicationController
   # PATCH/PUT /attacheds/1
   # PATCH/PUT /attacheds/1.json
   def update
+    rol = params[:param]
+
     if (!@attached.descripcion.present? or !@attached.file.present?)
       redirect_to request.referrer, notice: 'Complete todos los campos.!'
 
       else  
         respond_to do |format|
           if @attached.update(attached_params)
-            format.html { redirect_to Investigation.find(@attached.investigation_id), notice: 'Adjunto modificado.' }
+            format.html { redirect_to investigation_path(Investigation.find(@attached.investigation_id),:param => rol), notice: 'Adjunto modificado.' }
             format.json { render :show, status: :ok, location: @attached }
           else
             format.html { render :edit }

@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-<%= form_for @investigation, url: {action: "update"}, html: {id: "form"} do |form| %>
+<%= form_for @investigation, url: {action: "update"}, html: {id: "form", autocomplete: "off"} do |form| %>
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -45,7 +45,7 @@
 
       <div class="form-group">
         <%= form.label :user_id, 'Encargado: ' %>
-        <%= form.select :user_id, options_for_select( @users.map{ |u| [ u.name + ' ' + u.last_name.to_s, u.id] }) %>
+        <%= form.select :user_id, options_for_select( @users.map{ |u| [ u.name + ' ' + u.last_name.to_s, u.id] }, @investigation.user_id) %>
       </div>
     </div>
   </div>
@@ -90,6 +90,7 @@ function checkCampos(obj) {
         return true;
     }
 }
+
   
 $('.date-j').datepicker({ 
       format: "yyyy/mm/dd",

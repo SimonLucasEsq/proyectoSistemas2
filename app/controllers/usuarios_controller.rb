@@ -1,13 +1,23 @@
 class UsuariosController < ApplicationController
   layout 'template'
    before_action :authenticate_user!
-   before_action :set_user, only: [:show, :edit, :update,:destroy]
+   before_action :set_user, only: [:show, :edit, :update,:destroy, :show_investigator]
 
   def index
 		@users=User.all
-    authorize! :read, @user, :message =>'No puede entrar a esta opcion'
+    authorize! :read, @user, :message => 'No puede entrar a esta opcion.'
+
 	end
   
+  def investigators
+    @rol = Role.find_by(:name => params[:param])
+    @investigators = User.with_role @rol.name
+  end
+
+  def show_investigator
+    @rol = params[:param]
+    @investigations = Investigation.where(:user_id => params[:id])
+  end
 
   # GET /user/new
   def new
@@ -20,7 +30,7 @@ class UsuariosController < ApplicationController
   def show
     respond_to do |format|
         format.js
-      end
+    end
   end
 
   # GET /user/1/edit

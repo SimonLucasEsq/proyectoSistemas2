@@ -1,18 +1,13 @@
 class InvestigationsController < ApplicationController
   before_action :set_investigation, only: [:show, :edit, :update, :destroy]
   layout 'template'
-
   # GET /investigations
   # GET /investigations.json
   def index
-    @rol_id = Role.find_by(:name => params[:param]).id
+    @rol = Role.find_by(:name => params[:param])
 
     @investigations = Investigation.find_by_sql("select * from investigations i
-     inner join (select * from users_roles ur where ur.role_id = #{@rol_id}) as ur on i.user_id = ur.user_id")
-  end
-
-  def my_investigations
-    @investigations = Investigation.where(:user_id => current_user.id)
+     inner join (select * from users_roles ur where ur.role_id = #{@rol.id}) as ur on i.user_id = ur.user_id")
   end
 
   # GET /investigations/1
@@ -20,6 +15,8 @@ class InvestigationsController < ApplicationController
   def show
     # Obtiene todos los adjuntos con id igual al parametro pasado.
     @attacheds = Attached.where(:investigation_id => params[:id])
+    @rol = params[:param]
+
   end
 
   # GET /investigations/new
@@ -46,40 +43,31 @@ class InvestigationsController < ApplicationController
   def create
     @investigation = Investigation.new(investigation_params)
 
-    # Si no existen éstos campos no se guarda y crea un mensaje.
-    if !(@investigation.nombre.present?)
-      redirect_to request.referrer, notice: 'Complete todos los campos.!'  
 
-    else
-      respond_to do |format|
-        if @investigation.save
-          format.html { redirect_to @investigation, notice: 'Trabajo de investigación creado.' }
-          format.json { render :show, status: :created, location: @investigation }
-        else
-          format.html { render :new }
-          format.json { render json: @investigation.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @investigation.save
+        format.html { redirect_to request.referrer, notice: 'Trabajo de investigación creado.' }
+        format.json { render :show, status: :created, location: @investigation }
+      else
+        format.html { render :new }
+        format.json { render json: @investigation.errors, status: :unprocessable_entity }
       end
-    end
+    end   
   end
 
   # PATCH/PUT /investigations/1
   # PATCH/PUT /investigations/1.json
-  def update
-      # Si no existen éstos campos no se guarda y crea un mensaje.
-      if (!@investigation.nombre.present? or !@investigation.descripcion.present?)
-        redirect_to request.referrer, notice: 'Complete todos los campos.!'
-      else
+  def update  
         respond_to do |format|
           if @investigation.update(investigation_params)
-            format.html { redirect_to @investigation, notice: 'Trabajo de investigación´actualizado.' }
+            format.html { redirect_to request.referrer, notice: 'Trabajo de investigación actualizado.' }
             format.json { render :show, status: :ok, location: @investigation }
           else
             format.html { render :edit }
             format.json { render json: @investigation.errors, status: :unprocessable_entity }
           end
-        end
-      end  
+        end 
+
   end
 
   # DELETE /investigations/1
@@ -88,7 +76,8 @@ class InvestigationsController < ApplicationController
     @investigation.destroy
     respond_to do |format|
       # Redirige al index de investigations.
-      format.html { redirect_to investigations_url, notice: 'Investigation was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Investigación eliminada.' }
+
       format.json { head :no_content }
     end
   end
