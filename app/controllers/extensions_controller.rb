@@ -64,7 +64,9 @@ class ExtensionsController < ApplicationController
   def update
     respond_to do |format|
       if @extension.update(extension_params)
+
         format.html { redirect_to request.referrer, notice: 'Extension was successfully updated.' }
+
         format.json { render :show, status: :ok, location: @extension }
       else
         format.html { render :edit }
@@ -91,6 +93,6 @@ class ExtensionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def extension_params
-      params.require(:extension).permit(:name, :description, :date_start, :date_end, :state_id, :manager_id, :extension_type_id)
+      params.require(:extension).permit(:name, :description, :date_start, :date_end, :state_id, :manager_id, :extension_type_id, :career_id)
     end
 end

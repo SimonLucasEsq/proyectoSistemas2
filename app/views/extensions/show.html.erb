@@ -1,7 +1,11 @@
-<p id="notice"><%= notice %></p>
 <div class="invoice">  
- 
-  <h3>Detalle del Proyecto</h3> 
+  <% if @extension.extension_type.name == "Activity"%>
+  <h3>Detalle de la Actividad</h3> 
+  <% elsif @extension.extension_type.name == "Proyect"%>
+   <h3>Detalle del Proyecto</h3> 
+  <% elsif @extension.extension_type.name == "Service" %>
+   <h3>Detalle del Servicio</h3> 
+  <% end %>  
   <section class="main row">
     <div class="col-md-4">
         <p>
@@ -13,22 +17,25 @@
           <strong>Descripcion:</strong>
           <%= @extension.description %>
         </p>
+        <p>
+          <strong>Estado:</strong>
+          <%= @extension.state_name %>
+        </p>
 
         <p>
-          <strong>Fecha Inicio:</strong>
-          <%= @extension.date_start %>
+          <strong>Carrera:</strong>
+          <%= @extension.career.name %>
         </p>
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <p>
+          <strong>Fecha Inicio:</strong>
+          <%= @extension.date_start %>
+        </p>
+        <p>
           <strong>Fecha Fin:</strong>
           <%= @extension.date_end %>
-        </p>
-
-        <p>
-          <strong>Estado:</strong>
-          <%= @extension.state_name %>
         </p>
 
         <p>
