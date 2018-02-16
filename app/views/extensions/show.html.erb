@@ -1,42 +1,116 @@
-<p id="notice"><%= notice %></p>
+<div class="invoice">  
+  <% if @extension.extension_type.name == "Activity"%>
+  <h3>Detalle de la Actividad</h3> 
+  <% elsif @extension.extension_type.name == "Proyect"%>
+   <h3>Detalle del Proyecto</h3> 
+  <% elsif @extension.extension_type.name == "Service" %>
+   <h3>Detalle del Servicio</h3> 
+  <% end %>  
+  <section class="main row">
+    <div class="col-md-4">
+        <p>
+          <strong>Nombre:</strong>
+          <%= @extension.name %>
+        </p>
 
-  <div class="col-md-6">
-  <h1>Detalle Proyecto</h1>
-  <p>
-    <strong>Nombre:</strong>
-    <%= @extension.name %>
-  </p>
+        <p>
+          <strong>Descripcion:</strong>
+          <%= @extension.description %>
+        </p>
+        <p>
+          <strong>Estado:</strong>
+          <%= @extension.state_name %>
+        </p>
 
-  <p>
-    <strong>Descripcion:</strong>
-    <%= @extension.description %>
-  </p>
+        <p>
+          <strong>Carrera:</strong>
+          <%= @extension.career.name %>
+        </p>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <p>
+          <strong>Fecha Inicio:</strong>
+          <%= @extension.date_start %>
+        </p>
+        <p>
+          <strong>Fecha Fin:</strong>
+          <%= @extension.date_end %>
+        </p>
 
-  <p>
-    <strong>Fecha Inicio:</strong>
-    <%= @extension.date_start %>
-  </p>
-
-  <p>
-    <strong>Fecha Fin:</strong>
-    <%= @extension.date_end %>
-  </p>
-
-  <p>
-    <strong>Estado:</strong>
-    <%= @extension.state_name %>
-  </p>
-
-  <p>
-    <strong>Encargado:</strong>
-    <%= @extension.manager_name %>
-  </p>
-
-  <%= link_to 'Fotos', show_photos_extension_path(@extension) %> |
-  <%= link_to 'Editar', edit_extension_path(@extension) %> |
-  <%= link_to 'volver', extensions_path(:nombre => 'Activiy') %>
-
-  </div>
-
-<div class="col-md-3">
+        <p>
+          <strong>Encargado:</strong>
+          <%= @extension.manager_name %>
+        </p>
+    </div>
+  </section>
+  <%= link_to '', show_photos_extension_path(@extension), class: 'btn btn-default fa fa-camera' %>
+  <%= link_to '', show_documents_extension_path(@extension), class: 'btn btn-default fa fa-file-text-o'  %>
 </div>
+<div class="invoice">
+<h3>Participantes</h3>
+<!--link para agregar un paticipante por modal-->
+<%= link_to new_participant_path(:id => @extension.id), :remote=>true do %><i class="btn btn-primary fa fa-user-plus"></i><%end%>
+
+
+  <section class="content">
+      <div class="row">
+        <div class="col-xs-12">    
+          <!-- Content Header (Page header) -->
+          <div class="box">
+          
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-hover table-striped">
+                <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Correo</th>
+                  <th>Horas</th>
+                  <th>Tipo</th>
+                  <th>Categoría</th>
+                  <th></th>
+                </tr>
+                </thead>
+                  <tbody>
+                    <% @extension.participants.each do |participant| %>
+                      <tr>
+                        <td><%= Student.find(participant.student_id).name %></td>
+                        <td><%= Student.find(participant.student_id).lastname %></td>
+                        <td><%= Student.find(participant.student_id).email %></td>
+                        <% if StudentType.find(participant.student_type_id).participant == "Extensionista"%>
+                          <td><%=participant.hours%></td>
+                        <% else%>
+                          <td>-</td>
+                        <% end %>
+                        <td><%= StudentType.find(participant.student_type_id).participant %></td>
+                        <td><%= Student.find(participant.student_id).category.name %></td>
+                        <td><%= link_to '', edit_participant_path(participant), :remote=>true, class: 'btn btn-default fa fa-pencil' %>
+                        <%= link_to '', participant, method: :delete, data: { confirm: 'Ests seguro?' }, class: 'btn btn-default fa fa-close' %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+              </table>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section> 
+</div>
+    <!-- modal del participante, cuando se haga click en el mas aparezca el modal en este div -->
+    <div id="participante" style='display:none;'></div>
+
+  <%= link_to 'volver', extensions_path(:nombre => ExtensionType.find(@extension.extension_type_id).name) %>
+
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable()
+  })
+</script>

@@ -33,7 +33,6 @@
           <% @investigations.each do |investigation| %>
             <tr>
               <td><%= investigation.nombre %></td>
-              
               <td><%= investigation.user.name + ' ' + investigation.user.last_name.to_s %></td>
               <td><%= investigation.fecha_inicio %></td>
               <td><%= investigation.fecha_fin %></td>
@@ -62,3 +61,4 @@ $('#tablaInvestigacion').DataTable();
  
 } );
 </script>
+

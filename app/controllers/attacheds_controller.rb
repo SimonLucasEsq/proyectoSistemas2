@@ -19,6 +19,7 @@ class AttachedsController < ApplicationController
     # Completa el campo con el parametro pasado.
     @attached.investigation_id = params[:var]
     @rol = params[:rol]
+
   end
 
   # GET /attacheds/1/edit
@@ -44,6 +45,7 @@ class AttachedsController < ApplicationController
         respond_to do |format|
         if @attached.save
           format.html { redirect_to investigation_path(Investigation.find(@attached.investigation_id),:param => rol), notice: 'Adjunto creado exitosamente.' }
+
           format.json { render :show, status: :created, location: @attached }
         else
           format.html { render :new }
