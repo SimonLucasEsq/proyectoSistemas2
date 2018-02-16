@@ -32,7 +32,14 @@ Rails.application.routes.draw do
       get :show_photos
     end
   end
-  resources :usuarios
+  resources :usuarios do
+    member do
+      get :show_investigator
+    end
+    collection do
+      get :investigators
+    end
+  end
   resources :role
   resources :audits
   devise_for :users
