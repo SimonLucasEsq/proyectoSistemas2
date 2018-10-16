@@ -1,2 +1,0 @@
-class Carrera < ApplicationRecord
-end
