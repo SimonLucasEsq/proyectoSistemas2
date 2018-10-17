@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dirección de Extensión e Investigación</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+<body class="hold-transition skin-green sidebar-mini">
+
+  <div class="wrapper">
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="/" class="logo">  <!-- "/" es la ruta especificada al home#index -->
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <%if current_user.is_adminExt? %>
+          <span class="logo-mini">Ext</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg">Extensión</span>
+        <% elsif current_user.is_adminInv?%>
+          <span class="logo-mini">Inv.</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg">Investigación</span>
+        <% elsif current_user.is_admin?%>
+          <span class="logo-mini">Ext-Inv</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg">Ext-Inv</span>
+        <% end %>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+
+          <li class="header">MENU DE EXTENSION</li>
+          <%if current_user.is_adminExt? || current_user.is_admin?%>
+            <li><%= link_to extensions_path do%><i class="fa fa-list-alt fa-fw"></i> <span>Extensiones</span><%end%></li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-users fa-fw"></i> <span>Participantes</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><%= link_to students_path(:nombre => 'Estudiante') do%><i class="fa fa-circle-o"></i> <span>Universitarios</span><%end%></li>
+                <li><%= link_to students_path(:nombre => 'Docente') do%><i class="fa fa-circle-o"></i> <span>Docentes</span><%end%></li>
+              </ul>
+            </li>
+
+            <li><%= link_to managers_path do%><i class="fa fa-users"></i> <span>Encargados</span><%end%></li>
+            <li><%= link_to photos_path do%><i class="fa fa-camera"></i> <span>Galeria</span><% end %></li>    
+          
+          <% end %>
+          <%if current_user.is_adminInv?%>
+            <li class="header">MENU DE INVESTIGACION</li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-list-alt fa-fw"></i> <span>Investigaciones</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><%= link_to investigations_path(:param => 'docenteInvestigador') do%><i class="fa fa-circle-o"></i> Informes de Docentes<%end%></li>
+                <li><%= link_to investigations_path(:param => 'alumnoInvestigador')  do%><i class="fa fa-circle-o"></i> Informes Universitarios<%end%></li>
+              </ul>
+            </li>
+            <li><%= link_to  do%><i class="fa fa-users"></i> <span>Docentes Investigadores</span><%end%></li>
+          <% end %>
+          <li class="header"></li>
+          <li><%= link_to usuarios_path do%><i class="fa fa-user"></i> <span>Usuarios</span><% end %></li>
+          <li><%= link_to audits_path do%><i class="fa fa-user-secret"></i> <span>Auditoria</span><%end%></li>
+
+
+          <li><%=link_to 'Salir',destroy_user_session_path(:authenticity_token=> form_authenticity_token()),method: 'delete' %></li>
+         
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+  
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="padding-top:1px; background:white;">
+      <!-- Content Header (Page header) -->
+
+      <%= yield %>
+    </div>
+    <!-- /.content-wrapper -->
+    
+    <!-- Control Sidebar -->
+
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+  </div>
+
+</body>
+</html>

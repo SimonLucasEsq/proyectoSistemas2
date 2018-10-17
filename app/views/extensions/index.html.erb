@@ -1,0 +1,80 @@
+    <div class="invoice">
+        <header class="row">
+        <h1 class="page-header">Extensiones</h1>
+    </header>
+      <div class="box-header with-border">
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+      <table id="example1" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th style="width: 200px">Nombre</th>
+              <th style="width: 150px">Carrera</th>
+              <th style="width: 150px">Encargado</th>
+              <th style="width: 200px">Estado</th>
+              <th style="width: 150px">Fecha</th>
+              <th style="width: 150px">Opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @extensions.each do |extension| %>
+              <tr>
+                <td><%= extension.name %></td>
+                <td><%= extension.career.name %></td>
+                <td><%= extension.manager.name %></td>
+                <td>
+                  <% if extension.state.name == "en curso"%>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm progress-striped active">
+                      <div class="progress-bar progress-bar-primary" style="width: 55%"></div>
+                    </div>
+                  <% elsif extension.state.name == "culminado" %>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm">
+                      <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                    </div>
+                  <% elsif extension.state.name == "en espera" %>
+                    <%= extension.state.name %>
+                    <div class="progress progress-sm">
+                      <div class="progress-bar progress-bar-yellow" style="width: 55%"></div>
+                    </div>
+                  <% end %>
+                </td>
+                <td><%= extension.date_start %></td>
+                <td>
+                  <%= link_to '', extension,class: 'btn btn-default fa fa-eye' %>
+                  <%= link_to '', edit_extension_path(extension), class: 'btn btn-default fas fa-pencil-alt', :remote=>true%>
+                  <%= link_to '', extension, class: 'btn btn-default fas fa-trash-alt', method: :delete, data: {confirm: '¿Estas seguro?'}%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  
+              <!-- /.box-body -->
+      <div class="box-footer clearfix">
+        <ul class="pagination pagination-sm no-margin pull-left">
+          <li>
+              <%= link_to 'Nueva Extension', new_extension_path(), class: 'btn btn-primary', :remote=>true %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<div id="new-ext" style="display:none;"></div>
+
+
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>

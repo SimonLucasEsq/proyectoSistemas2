@@ -1,0 +1,33 @@
+<%= form_with(model: state, local: true) do |form| %>
+  <% if state.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(state.errors.count, "error") %> prohibited this state from being saved:</h2>
+
+      <ul>
+      <% state.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<div class="col-md-3"></div>
+
+<div class="col-md-6">
+  <div class="form-group">
+    <%= form.label "Nombre" %>
+    <%= form.text_field :name, id: :manager_name, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <ul class="pull-right">
+      <%= link_to 'Volver', states_path, class: 'btn btn-default'%>
+    <%= form.submit "Agregar estado", class: 'btn btn-primary'%>
+    <% end %>
+  </div>
+  </ul>
+
+
+<div class="col-md-3"></div>

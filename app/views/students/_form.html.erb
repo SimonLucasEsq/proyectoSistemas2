@@ -1,0 +1,55 @@
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="container col-sm-10 col-md-8 col-lg-5">
+  <div class= "field">
+    <%= form.label 'Nombre' %>
+    <%= form.text_field :name, id: :student_name, class: 'form-control'  %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Apellido'%>
+    <%= form.text_field :lastname, id: :student_last_name, class: 'form-control' %>
+  </div>
+
+  <div class="field"> 
+    <%= form.label 'CI' %>
+    <%= form.number_field :ci, id: :student_ci, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label  'Correo' %>
+    <%= form.text_field :email, id: :student_mail, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Horas de extension'%>
+    <%= form.number_field :hours, id: :student_hours, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= form.label 'Carrera' %>
+    <%= form.select :career_id,  options_for_select(Career.all.map{ |c| [c.name, c.id]}), {}, {class: 'select2',:style => "width:100%;"}%>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Atras', students_path, class: 'btn btn-default' %>
+    <%= form.submit 'Guardar',class: 'btn btn-primary'%>
+  </div>
+</div>
+<% end %>
+<script>
+$(document).ready(function() {
+    $('.select2').select2();
+});
+</script>
+

@@ -1,0 +1,18 @@
+<div class="container">
+	
+	<div class="alert alert-success">
+		<h3>Proyecto: <%=@extension.name%> </h3>
+			
+	</div>
+
+			<div class="list-group">
+				<% @document.each do |a| %>
+				<%= 
+					link_to a.name , a.doc.url, class: 'list-group-item list-group-item-action'
+				%>
+ 			<% end %>
+			</div>
+	<%= link_to 'Nuevo Documento', new_document_path, class: 'btn btn-primary' %>
+</div>
+
+

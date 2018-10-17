@@ -1,0 +1,53 @@
+
+<%= form_with(model: investigation, local: true) do |form| %>
+  <% if investigation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(investigation.errors.count, "error") %> prohibited this investigation from being saved:</h2>
+
+      <ul>
+      <% investigation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-12">
+    <div class="col-md-8">
+      <div class="form-group">
+        <%= form.label :nombre %>
+        <%= form.text_field :nombre, id: :investigation_nombre, class: "form-control" %>
+      </div>
+   
+      <div class="form-group">
+        <%= form.label :descripcion %>
+        <%= form.text_field :descripcion, id: :investigation_descripcion, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.label :fecha_inicio, 'Fecha de inicio:' %><br>
+        <%= form.date_select :fecha_inicio, id: :investigation_fecha_inicio %>
+      </div>
+
+
+      <div class="form-group">
+        <%= form.label :fecha_fin, 'Fecha de finalización:' %><br>
+        <%= form.date_select :fecha_fin, id: :investigation_fecha_fin %>
+      </div>  
+
+      <div class="form-group">
+        <%= form.label :user_id, 'Encargado: ' %>
+        <%= form.select :user_id, options_for_select( @users.map{ |u| [ u.name + ' ' + u.last_name.to_s, u.id] }) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="actions form-group">
+      <%= form.submit 'Crear', class: 'btn btn-primary' %>
+      <%= link_to 'Volver', investigations_path, class: 'btn btn-success' %>
+    </div>
+  </div>  
+<% end %>

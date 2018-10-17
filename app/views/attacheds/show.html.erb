@@ -1,0 +1,24 @@
+<p id="notice" class="alert alert-success"><%= notice %></p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @attached.descripcion %>
+</p>
+
+<p>
+  <strong>Fecha subida:</strong>
+  <%= @attached.fecha_subida %>
+</p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @attached.investigation %>
+</p>
+
+<p>
+  <strong>Investigation:</strong>
+  <%= @attached.file_file_name %>
+</p>
+
+<%= link_to 'Edit', edit_attached_path(@attached) %> |
+<%= link_to 'Back', attacheds_path %>
