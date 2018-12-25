@@ -1,0 +1,47 @@
+<%= form_with(model: professor, local: true) do |form| %>
+  <% if professor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(professor.errors.count, "error") %> prohibited this professor from being saved:</h2>
+
+      <ul>
+      <% professor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :professor_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, id: :professor_last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :professor_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :career_id %>
+    <%= form.text_field :career_id, id: :professor_career_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :professor_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ci %>
+    <%= form.text_field :ci, id: :professor_ci %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Extension:</strong>
+  <%= @professor_participant.extension %>
+</p>
+
+<p>
+  <strong>Professor:</strong>
+  <%= @professor_participant.professor %>
+</p>
+
+<%= link_to 'Edit', edit_professor_participant_path(@professor_participant) %> |
+<%= link_to 'Back', professor_participants_path %>
